@@ -11,6 +11,8 @@
       <li><a href="#process">Our Process</a></li>
       <li><a href="#case-studies">Case Studies</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/demo" class="nav-demo">Demo</a></li>
+      <li><a href="/portal" class="nav-login">Log In</a></li>
       <li><a href="/discovery" class="nav-cta">Book A Call</a></li>
     </ul>
   </nav>
@@ -21,7 +23,7 @@
         <h2>Automation without the bloat. ROI without the gamble.</h2>
       </div>
       <div class="hero-visual">
-        <!-- Placeholder for banner image -->
+        <img src="/hero2.webp" alt="kyros automation solutions" class="hero-image">
       </div>
     </div>
   </div>
@@ -47,7 +49,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3.15rem;
+    padding: 0.75rem 3.15rem;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     z-index: 10;
@@ -73,7 +75,7 @@
   .nav-links {
     display: flex;
     list-style: none;
-    gap: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -83,9 +85,36 @@
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
-    font-size: 1.155rem; /* 5% larger: 1.1rem to 1.155rem */
+    font-size: 1.3rem;
     transition: all 0.3s ease;
-    padding: 0.525rem 0; /* 5% larger: 0.5rem to 0.525rem */
+    padding: 0.5rem 0;
+  }
+
+  .nav-demo {
+    color: var(--accent-blue) !important;
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .nav-demo:hover {
+    color: var(--electric-blue-dark) !important;
+    transform: translateY(-2px);
+  }
+
+  .nav-login {
+    color: var(--accent-blue) !important;
+    border: 2px solid var(--accent-blue);
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .nav-login:hover {
+    background: var(--accent-blue);
+    color: white !important;
+    transform: translateY(-2px);
   }
 
   .nav-links a:hover {
@@ -132,16 +161,23 @@
   }
 
   .hero-visual {
-    height: 420px; /* 5% larger: 400px to 420px */
-    background: linear-gradient(135deg, var(--accent-blue) 0%, #0056b3 100%);
-    border-radius: 12.6px; /* 5% larger: 12px to 12.6px */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 1.26rem; /* 5% larger: 1.2rem to 1.26rem */
-    font-weight: 500;
-    opacity: 0.8;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12.6px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover {
+    transform: scale(1.02);
   }
 
   @media (max-width: 768px) {
