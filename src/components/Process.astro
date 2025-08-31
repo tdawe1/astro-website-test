@@ -31,27 +31,11 @@
       </div>
     </div>
   </div>
-  
-  <!-- Background workflow pattern -->
-  <div class="workflow-pattern">
-    <div class="flow-node node-1"></div>
-    <div class="flow-node node-2"></div>
-    <div class="flow-node node-3"></div>
-    <div class="flow-connection conn-1"></div>
-    <div class="flow-connection conn-2"></div>
-    <div class="flow-connection conn-3"></div>
-  </div>
 </section>
 
 <style>
   .process {
-    background: 
-      linear-gradient(135deg, #F8F9FA 0%, #E8F4FD 100%),
-      linear-gradient(45deg, transparent 49%, rgba(0, 123, 255, 0.02) 50%, transparent 51%),
-      linear-gradient(-45deg, transparent 49%, rgba(0, 86, 179, 0.02) 50%, transparent 51%);
-    background-size: 100% 100%, 80px 80px, 80px 80px;
-    position: relative;
-    overflow: hidden;
+    background-color: #F8F9FA;
   }
 
   .process-layout {
@@ -59,8 +43,6 @@
     grid-template-columns: 0.8fr 1.2fr;
     gap: 4.2rem;
     align-items: start;
-    position: relative;
-    z-index: 2;
   }
 
   .process-text {
@@ -100,24 +82,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: none;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .step::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--electric-blue-dark));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-  }
-
-  .step:hover::before {
-    transform: scaleX(1);
   }
 
   .step:hover {
@@ -137,11 +101,6 @@
     font-size: 2.1rem;
     font-weight: 700;
     margin-bottom: 2.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  .step:hover .icon-placeholder {
-    transform: scale(1.05);
   }
 
   .step h3 {
@@ -158,88 +117,6 @@
     line-height: 1.7;
     margin: 0;
     font-size: clamp(1.05rem, 2.1vw, 1.155rem);
-  }
-
-  /* Workflow pattern background */
-  .workflow-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .flow-node {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: rgba(0, 123, 255, 0.15);
-    border-radius: 50%;
-    animation: flowPulse 3s ease-in-out infinite;
-  }
-
-  .node-1 {
-    top: 30%;
-    left: 15%;
-    animation-delay: 0s;
-  }
-
-  .node-2 {
-    top: 50%;
-    left: 50%;
-    animation-delay: 1s;
-  }
-
-  .node-3 {
-    top: 70%;
-    right: 20%;
-    animation-delay: 2s;
-  }
-
-  .flow-connection {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
-    animation: flowShimmer 4s ease-in-out infinite;
-  }
-
-  .conn-1 {
-    width: 120px;
-    height: 2px;
-    top: 30%;
-    left: 20%;
-    transform: rotate(45deg);
-    animation-delay: 0s;
-  }
-
-  .conn-2 {
-    width: 100px;
-    height: 2px;
-    top: 50%;
-    left: 40%;
-    transform: rotate(-45deg);
-    animation-delay: 1.5s;
-  }
-
-  .conn-3 {
-    width: 80px;
-    height: 2px;
-    top: 70%;
-    left: 60%;
-    transform: rotate(45deg);
-    animation-delay: 3s;
-  }
-
-  @keyframes flowPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.3); }
-  }
-
-  @keyframes flowShimmer {
-    0% { opacity: 0.2; }
-    50% { opacity: 0.6; }
-    100% { opacity: 0.2; }
   }
 
   @media (min-width: 1920px) {
@@ -288,10 +165,6 @@
       height: 47.25px;
       font-size: 1.155rem;
       margin-bottom: 1.05rem;
-    }
-
-    .workflow-pattern {
-      display: none;
     }
   }
 </style>

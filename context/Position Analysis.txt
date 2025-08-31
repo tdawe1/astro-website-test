@@ -1,0 +1,92 @@
+Positioning Analysis:
+Clarity
+
+What’s clear: You want to be the applied AI/automation partner for SMEs, offering bespoke workflow improvements that larger enterprise vendors ignore. You frame yourself as practical, creative, fast-moving.
+
+What’s fuzzy:
+
+“AI consulting” is an overloaded label; many SMEs don’t know what it means or assume it’s expensive.
+
+“Finding hidden inefficiencies” sounds good but risks being too abstract — buyers may not self-identify with that need.
+
+Your personal story (entrepreneur, translator, marketer, builder of tools like GengoWatcher) is compelling but not yet tightly woven into your value proposition.
+
+Strengths
+
+Unique edge: You straddle creative problem-solving + technical execution — a rare mix. You’re not just a strategist or a coder, but someone who can imagine, scope, and prototype quickly.
+
+SME focus: You’re right — big firms target enterprises, leaving SMEs underserved. That’s a gap.
+
+Entrepreneurial energy: The profile shines here: approachable, high-energy, good with clients, persuasive.
+
+Portfolio in the making: Tools like GengoWatcher prove you’re not hypothetical — you’ve shipped.
+
+Weaknesses
+
+Authority gap: As you noted, you’re a new company without brand credibility yet. SMEs may wonder “why trust you over my IT guy?”
+
+Vagueness of offer: Without clear “entry points” (e.g., invoice automation, content workflows), it risks being too conceptual.
+
+Overlap with others: RPA vendors, IT consultants, even accountants are edging into “automation” — so you need sharper differentiation.
+
+Title mismatch: Labeling yourself “AI consultant” may attract the wrong audience (people expecting deep ML models, not workflow automation).
+
+Differentiation in Current Market
+
+Most consultancies: Position as “AI strategy advisors” (high-level, expensive) or “RPA implementers” (corporate IT).
+
+Your play: Outcome-driven, fast, and affordable automation for SMEs. The analogy could be: “the local craftsman who builds the exact tool you need, instead of selling you a factory.”
+
+Your edge vs IT consultants: You speak business outcomes and efficiency, not just tech.
+
+Your edge vs AI hype shops: You’re practical, not buzzwordy. (“We don’t sell hype — we save you time.”)
+
+Refinements in Messaging
+
+Here’s how to tighten and sharpen your story:
+
+1. Lead with outcomes, not AI.
+
+Instead of: “We help SMEs apply AI to find inefficiencies.”
+Try:
+
+“We help small businesses save hours every week by automating admin, reporting, and client communications.”
+— Then introduce AI as one of the tools you use.
+
+2. Name specific entry points.
+
+Give SMEs a menu they recognise:
+
+“Invoice automation”
+
+“Proposal generation”
+
+“Client reporting summariser”
+
+“Email + task reminders”
+
+This grounds your offer and avoids vagueness.
+
+3. Use your story as proof.
+
+Bridge your credibility gap by showing what you’ve built for yourself:
+
+“We started by building automation tools for our own business — now we help others do the same.”
+
+SMEs love founder-led stories.
+
+4. Reframe your positioning.
+
+Instead of: AI consulting / workflow inefficiency spotting
+Try:
+“Applied Automation for Small Businesses.”
+Subline: “Bespoke tools to cut admin, reduce errors, and free up your team — without enterprise bloat.”
+
+5. Two-track messaging.
+
+For SMEs (clients): Emphasise time, money, simplicity.
+
+For employers (TPM pivot): Frame yourself as a hands-on product strategist with experience identifying problems, validating needs, and building prototypes — exactly what PMs do.
+
+✅ Conclusion:
+Your positioning is promising but currently vague. The real differentiator isn’t “AI consulting” but “custom automation for SMEs, delivered fast, without enterprise bloat.” Lead with outcomes and examples, tuck AI in as an enabler, and use your own built tools as proof points. That makes you compelling to both clients (practical efficiency) and employers (applied product thinking).

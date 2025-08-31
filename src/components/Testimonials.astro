@@ -1,0 +1,200 @@
+---
+// Testimonials component - thin section with client testimonials
+---
+
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-content">
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"kyros transformed our workflow. We went from manual processes taking hours to automated solutions in minutes. The ROI was immediate."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Sarah Chen</h4>
+              <span>Operations Director, TechFlow Inc.</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"Finally, automation that actually works without the complexity. kyros delivered exactly what they promised - no bloat, just results."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Marcus Rodriguez</h4>
+              <span>CEO, GrowthLab Solutions</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"The speed and clarity of their approach is unmatched. We've tried other automation tools, but kyros is in a league of its own."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Jennifer Park</h4>
+              <span>VP of Marketing, ScaleUp Co.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonials-content {
+    text-align: center;
+  }
+
+
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 0;
+  }
+
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #3b82f6, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+
+  .testimonial-card:hover::before {
+    opacity: 1;
+  }
+
+  .testimonial-content {
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    font-style: italic;
+    margin: 0;
+    position: relative;
+  }
+
+  .testimonial-content p::before {
+    content: '"';
+    font-size: 3rem;
+    color: #6366f1;
+    position: absolute;
+    top: -1rem;
+    left: -0.5rem;
+    opacity: 0.3;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .author-info span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 3rem 0;
+    }
+
+
+
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+
+    .testimonial-content p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .testimonials {
+      padding: 2rem 0;
+    }
+
+
+  }
+</style>

@@ -1,0 +1,34 @@
+Summary
+
+Branch & Signal is an agency that designs and delivers bespoke automation, workflow, and AI solutions for SMEs through a transparent 3-step process over 4–8 weeks. We focus on lightweight, practical tools that integrate seamlessly into existing workflows and deliver measurable ROI.
+
+Must Have Features
+Bespoke Automation Solutions: Completely custom automation and workflow solutions tailored to each client's specific processes to eliminate real-world bottlenecks.
+Structured 3-Step Process: A transparent process of Discovery Sprint, Pilot Build, and Implementation & Enablement delivers solutions in a predictable 4–8 week timeline.
+ROI-Focused Delivery: Each solution is designed to solve a business case that ensures the project fees pay for themselves through measurable savings or revenue gains.
+Free No-Obligation Discovery Call: A complimentary initial consultation to map workflows, identify high-value opportunities, and validate potential ROI.
+Lightweight, No-Bloat Approach: Solutions avoid unnecessary complexity and enterprise-level bloat, focusing on practical fixes that integrate naturally into existing workflows.
+Other Features
+Demo Project Showcase: A fully functional Tableau-like data hub demonstrating core capabilities and potential use cases.
+Real-World Case Studies: Documented success stories across translation, marketing reporting, and inventory quoting workflows showcasing significant time and error reductions.
+Founder-Led Expertise: Hands-on leadership by the founder ensures deep technical knowledge aligned with SME operational realities.
+AI-Powered Insights: Integration of AI components to augment data analysis, reporting, and intelligent automation where appropriate.
+Responsive Website with Scheduling CTA: A clean, minimalist website optimized for mobile and desktop with prominent call-to-action buttons linked to a scheduling tool.
+SEO-Optimized Content: Copy and structure built to improve search visibility and attract qualified SME leads.
+Minimalist Monochrome Design with Accent: Sharp, professional visual identity using a monochrome palette with electric blue accents for clarity and brand consistency.
+Transparent Pricing Model: Clear fee structure based on project scope and expected ROI to build trust and reduce client uncertainty.
+Client Enablement Resources: Simple guides, playbooks, and training materials to empower client teams to adopt and maintain new solutions.
+Iterative Improvement Options: Opportunity for additional iteration cycles to refine and expand solutions based on real-world feedback.
+Target Audience
+
+Owners and senior managers of UK-based SMEs (5-50 employees) who are pragmatic, time-poor, and results-oriented, seeking practical workflow automation with clear ROI.
+
+Industry
+
+Business Process Automation Consulting
+
+Category
+
+Custom Workflow Automation Agency
+
+Copy Analysis
