@@ -1,10 +1,9 @@
 # kyros Website
 
-A modern, responsive website for kyros - a UK-based automation agency that helps SMEs cut bottlenecks, save hours, and unlock growth with lightweight, bespoke automation.
+A  website for kyros - a UK-based automation agency that builds automation and workflow optimisation tools.
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, professional layout inspired by high-end tech websites
 - **Responsive**: Optimized for all screen sizes with fluid typography
 - **Performance**: Fast-loading static site built with Astro
 - **SEO Optimized**: Semantic HTML and proper meta tags
@@ -29,7 +28,7 @@ This project was built using **Astro** as a learning experience and exploration 
 - **Modern Developer Experience**: Built-in TypeScript support, hot reloading, and excellent tooling
 - **Learning Opportunity**: A chance to explore a framework that's gaining significant traction in the static site space
 
-**Note**: This is my first Astro project, so the codebase represents a learning journey. While functional and well-structured, it may not follow all Astro best practices yet.
+**Note**: This is my first Astro project, so the codebase represents a learning journey. It may not follow all Astro best practices yet.
 
 ## 📁 Project Structure
 
@@ -62,9 +61,9 @@ src/
 
 All rights reserved © 2025 kyros
 
-## 🤝 Support
+## 🤝 Contact
 
-For questions or support, contact hello@kyros.solutions
+hello@kyros.solutions
 
 ---
 
