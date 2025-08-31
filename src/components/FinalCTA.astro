@@ -15,69 +15,220 @@
       <p>No jargon. No lock-in. No wasted spend.</p>
     </div>
   </div>
+  
+  <!-- Background CTA pattern -->
+  <div class="cta-pattern">
+    <div class="cta-circle circle-1"></div>
+    <div class="cta-circle circle-2"></div>
+    <div class="cta-circle circle-3"></div>
+    <div class="cta-arrow arrow-1"></div>
+    <div class="cta-arrow arrow-2"></div>
+    <div class="cta-sparkle sparkle-1"></div>
+    <div class="cta-sparkle sparkle-2"></div>
+    <div class="cta-sparkle sparkle-3"></div>
+  </div>
 </section>
 
 <style>
   .final-cta {
-    background-color: var(--bg-light);
+    background: 
+      linear-gradient(135deg, var(--bg-light) 0%, #E8F4FD 100%),
+      radial-gradient(circle at 25% 75%, rgba(0, 123, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, rgba(0, 86, 179, 0.03) 0%, transparent 50%);
+    background-size: 100% 100%, 350px 350px, 350px 350px;
     color: var(--text-dark);
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
   .cta-description {
-    font-size: 1.575rem; /* 5% larger: 1.5rem to 1.575rem */
+    font-size: 1.575rem;
     color: var(--text-dark);
     text-align: center;
-    margin-bottom: 3.15rem; /* 5% larger: 3rem to 3.15rem */
-    max-width: 840px; /* 5% larger: 800px to 840px */
+    margin-bottom: 3.15rem;
+    max-width: 840px;
     line-height: 1.6;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 2;
   }
 
   .cta-actions {
-    margin-bottom: 3.15rem; /* 5% larger: 3rem to 3.15rem */
+    margin-bottom: 3.15rem;
+    position: relative;
+    z-index: 2;
   }
 
   .cta-button.primary {
     display: inline-block;
     background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
     color: white;
-    padding: 1.26rem 2.52rem; /* 5% larger: 1.2rem 2.4rem to 1.26rem 2.52rem */
+    padding: 1.26rem 2.52rem;
     text-decoration: none;
-    border-radius: 8.4px; /* 5% larger: 8px to 8.4px */
+    border-radius: 8.4px;
     font-weight: 600;
-    font-size: 1.26rem; /* 5% larger: 1.2rem to 1.26rem */
+    font-size: 1.26rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4.2px 15.75px rgba(0, 123, 255, 0.3); /* 5% larger shadows */
+    box-shadow: 0 4.2px 15.75px rgba(0, 123, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cta-button.primary:hover::before {
+    left: 100%;
   }
 
   .cta-button.primary:hover {
-    transform: translateY(-2.1px); /* 5% larger: -2px to -2.1px */
-    box-shadow: 0 6.3px 21px rgba(0, 123, 255, 0.4); /* 5% larger shadows */
+    transform: translateY(-2.1px);
+    box-shadow: 0 6.3px 21px rgba(0, 123, 255, 0.4);
   }
 
   .trust-indicators p {
-    font-size: 1.26rem; /* 5% larger: 1.2rem to 1.26rem */
+    font-size: 1.26rem;
     color: var(--text-dark);
     text-align: center;
     margin: 0;
     font-weight: 500;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* CTA background pattern */
+  .cta-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cta-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 123, 255, 0.08), transparent);
+    animation: ctaPulse 6s ease-in-out infinite;
+  }
+
+  .circle-1 {
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+  }
+
+  .circle-2 {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 2s;
+  }
+
+  .circle-3 {
+    width: 60px;
+    height: 60px;
+    bottom: 25%;
+    left: 25%;
+    animation-delay: 4s;
+  }
+
+  .cta-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid rgba(0, 123, 255, 0.1);
+    animation: arrowFloat 4s ease-in-out infinite;
+  }
+
+  .arrow-1 {
+    top: 30%;
+    right: 30%;
+    animation-delay: 0s;
+  }
+
+  .arrow-2 {
+    bottom: 40%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+
+  .cta-sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(0, 123, 255, 0.3);
+    border-radius: 50%;
+    animation: sparkleTwinkle 3s ease-in-out infinite;
+  }
+
+  .sparkle-1 {
+    top: 15%;
+    left: 60%;
+    animation-delay: 0s;
+  }
+
+  .sparkle-2 {
+    top: 45%;
+    left: 10%;
+    animation-delay: 1s;
+  }
+
+  .sparkle-3 {
+    bottom: 15%;
+    right: 25%;
+    animation-delay: 2s;
+  }
+
+  @keyframes ctaPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+
+  @keyframes arrowFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  @keyframes sparkleTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
   }
 
   @media (max-width: 768px) {
     .cta-description {
-      font-size: 1.26rem; /* 5% larger: 1.2rem to 1.26rem */
-      margin-bottom: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
+      font-size: 1.26rem;
+      margin-bottom: 2.625rem;
     }
 
     .cta-button.primary {
-      padding: 1.05rem 2.1rem; /* 5% larger: 1rem 2rem to 1.05rem 2.1rem */
-      font-size: 1.155rem; /* 5% larger: 1.1rem to 1.155rem */
+      padding: 1.05rem 2.1rem;
+      font-size: 1.155rem;
     }
 
     .trust-indicators p {
-      font-size: 1.155rem; /* 5% larger: 1.1rem to 1.155rem */
+      font-size: 1.155rem;
+    }
+
+    .cta-pattern {
+      display: none;
     }
   }
 </style>

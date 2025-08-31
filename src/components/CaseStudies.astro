@@ -94,15 +94,33 @@
       </div>
     </article>
   </div>
+  
+  <!-- Background data visualization pattern -->
+  <div class="data-pattern">
+    <div class="chart-bar bar-1"></div>
+    <div class="chart-bar bar-2"></div>
+    <div class="chart-bar bar-3"></div>
+    <div class="chart-line line-1"></div>
+    <div class="chart-line line-2"></div>
+    <div class="data-point point-1"></div>
+    <div class="data-point point-2"></div>
+    <div class="data-point point-3"></div>
+  </div>
 </section>
 
 <style>
   .case-studies {
-    background-color: var(--bg-light);
+    background: 
+      linear-gradient(135deg, var(--bg-light) 0%, #F5F9FF 100%),
+      radial-gradient(circle at 30% 30%, rgba(0, 123, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(0, 86, 179, 0.02) 0%, transparent 50%);
+    background-size: 100% 100%, 400px 400px, 400px 400px;
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 0;
+    position: relative;
+    overflow: hidden;
   }
 
   .case-studies-grid {
@@ -113,6 +131,8 @@
     max-width: 1890px;
     margin: 0 auto;
     padding: 0 3.15rem;
+    position: relative;
+    z-index: 2;
   }
 
   .case-study {
@@ -124,6 +144,24 @@
     min-height: 600px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-study::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--electric-blue-dark));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .case-study:hover::before {
+    transform: scaleX(1);
   }
 
   .case-study:hover {
@@ -157,6 +195,11 @@
     align-items: center;
     justify-content: center;
     color: white;
+    transition: transform 0.3s ease;
+  }
+
+  .case-study:hover .case-study-icon {
+    transform: scale(1.05);
   }
 
   .case-study-content {
@@ -211,6 +254,119 @@
     font-size: 0.945rem;
     font-weight: 600;
     white-space: nowrap;
+    transition: transform 0.3s ease;
+  }
+
+  .case-study:hover .metric {
+    transform: scale(1.05);
+  }
+
+  /* Data visualization background pattern */
+  .data-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .chart-bar {
+    position: absolute;
+    background: linear-gradient(to top, rgba(0, 123, 255, 0.08), rgba(0, 86, 179, 0.08));
+    border-radius: 2px;
+    animation: barGrow 4s ease-in-out infinite;
+  }
+
+  .bar-1 {
+    width: 8px;
+    height: 120px;
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .bar-2 {
+    width: 8px;
+    height: 80px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 1s;
+  }
+
+  .bar-3 {
+    width: 8px;
+    height: 160px;
+    bottom: 20%;
+    left: 30%;
+    animation-delay: 2s;
+  }
+
+  .chart-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+    animation: lineFlow 5s ease-in-out infinite;
+  }
+
+  .line-1 {
+    width: 200px;
+    height: 2px;
+    top: 30%;
+    left: 15%;
+    transform: rotate(15deg);
+    animation-delay: 0s;
+  }
+
+  .line-2 {
+    width: 150px;
+    height: 2px;
+    top: 60%;
+    right: 20%;
+    transform: rotate(-15deg);
+    animation-delay: 2.5s;
+  }
+
+  .data-point {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    animation: dataPulse 3s ease-in-out infinite;
+  }
+
+  .point-1 {
+    top: 25%;
+    left: 25%;
+    animation-delay: 0s;
+  }
+
+  .point-2 {
+    top: 45%;
+    right: 30%;
+    animation-delay: 1s;
+  }
+
+  .point-3 {
+    bottom: 35%;
+    left: 40%;
+    animation-delay: 2s;
+  }
+
+  @keyframes barGrow {
+    0%, 100% { transform: scaleY(0.8); opacity: 0.6; }
+    50% { transform: scaleY(1.2); opacity: 1; }
+  }
+
+  @keyframes lineFlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes dataPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
   }
 
   @media (max-width: 1200px) {
@@ -246,6 +402,10 @@
       width: 63px;
       height: 63px;
       font-size: 2.625rem;
+    }
+
+    .data-pattern {
+      display: none;
     }
   }
 
