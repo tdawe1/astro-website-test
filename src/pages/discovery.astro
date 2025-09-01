@@ -7,9 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <header class="contact-header">
       <div class="section-container">
         <div class="header-content">
-          <div class="contact-tag">Contact us</div>
           <h1>Let's Talk Automation</h1>
-          <p class="subtitle">Drop us a line or book a demo, your ops, powered by kyros.Flow.</p>
         </div>
       </div>
     </header>
@@ -37,6 +35,7 @@ import Layout from '../layouts/Layout.astro';
           
           <div class="right-column">
             <div class="contact-form-card">
+              <p class="form-subtitle">Drop us a line or book a demo, your ops, powered by kyros.Flow.</p>
               <form class="contact-form" id="contactForm">
                 <div class="form-group">
                   <label for="inquiry-type">What can we help you with?</label>
@@ -148,31 +147,12 @@ import Layout from '../layouts/Layout.astro';
     text-align: center;
   }
 
-  .contact-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-orange));
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-
   .header-content h1 {
     font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin: 0;
     line-height: 1.2;
     color: var(--text-dark);
-  }
-
-  .subtitle {
-    font-size: 1.2rem;
-    color: #6b7280;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
   }
 
   .contact-content {
@@ -254,6 +234,14 @@ import Layout from '../layouts/Layout.astro';
     padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: center;
   }
     font-size: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
     flex-shrink: 0;
