@@ -30,6 +30,10 @@
             <div class="hero-image-container right-angled">
               <img src="/reporting-hub.png" alt="kyros reporting hub" class="hero-image-3d">
             </div>
+            <div class="center-background-dim"></div>
+            <div class="hero-image-container center-overlay">
+              <img src="/centre-img.png" alt="kyros center overlay" class="hero-image-3d">
+            </div>
           </div>
         </div>
     </div>
@@ -195,28 +199,46 @@
     height: 580px;
   }
 
+  .center-background-dim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 650px;
+    z-index: 15;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(2px);
+  }
+
+  .center-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 650px;
+    z-index: 20;
+    padding: 30px 20px 20px 20px;
+  }
+
   .left-angled {
-    transform: perspective(1200px) rotateY(15deg) rotateX(5deg);
+    transform: perspective(1200px) rotateY(18deg) rotateX(6deg);
+    opacity: 0.6;
   }
 
   .right-angled {
-    transform: perspective(1200px) rotateY(-15deg) rotateX(-5deg);
+    transform: perspective(1200px) rotateY(-18deg) rotateX(-6deg);
+    opacity: 0.6;
   }
 
-  .hero-image-container:hover {
-    transform: perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.05);
-    z-index: 2;
-  }
+
 
       .hero-image-3d {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12.6px;
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
     }
 
 
@@ -271,6 +293,16 @@
     .hero-image-container {
       width: 480px;
       height: 600px;
+    }
+
+    .center-background-dim {
+      width: 400px;
+      height: 520px;
+    }
+
+    .center-overlay {
+      width: 400px;
+      height: 520px;
     }
 
     .right-angled {
