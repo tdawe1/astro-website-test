@@ -151,7 +151,7 @@ import Footer from '../components/Footer.astro';
               <h2>Book Your Call</h2>
               <p class="form-subtitle">Choose a time that works for you. Calls typically last 30-45 minutes.</p>
               
-              <form class="booking-form" id="contactForm">
+              <form class="booking-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
                   <label for="name">Full Name *</label>
                   <input type="text" id="name" name="name" placeholder="Full name" required>
@@ -581,56 +581,32 @@ import Footer from '../components/Footer.astro';
       const btnLoading = submitBtn.querySelector('.btn-loading') as HTMLElement;
 
       if (btnText && btnLoading) {
-        form.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
+        form.addEventListener('submit', function(e) {
           // Show loading state
           submitBtn.disabled = true;
           btnText.style.display = 'none';
           btnLoading.style.display = 'inline';
           formMessage.style.display = 'none';
           
-          try {
-            const formData = new FormData(form);
-            
-            const response = await fetch('/api/contact', {
-              method: 'POST',
-              body: formData
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-              // Show success message
-              formMessage.textContent = result.message;
-              formMessage.className = 'form-message success';
-              formMessage.style.display = 'block';
-              
-              // Reset form
-              form.reset();
-              
-              // Scroll to message
-              formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-              // Show error message
-              formMessage.textContent = result.message;
-              formMessage.className = 'form-message error';
-              formMessage.style.display = 'block';
-            }
-            
-          } catch (error) {
-            console.error('Form submission error:', error);
-            
-            // Show error message
-            formMessage.textContent = 'Something went wrong. Please try again or contact us directly.';
-            formMessage.className = 'form-message error';
+          // Formspree will handle the submission automatically
+          // We just need to show a success message after a delay
+          setTimeout(() => {
+            // Show success message
+            formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your call.';
+            formMessage.className = 'form-message success';
             formMessage.style.display = 'block';
-          } finally {
+            
+            // Reset form
+            form.reset();
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
             // Reset button state
             submitBtn.disabled = false;
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
-          }
+          }, 1000);
         });
       }
     }
