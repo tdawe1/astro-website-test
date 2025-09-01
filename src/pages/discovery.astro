@@ -2,53 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Book Your Free Discovery Call - kyros">
-  <div class="discovery-page page-transition">
-    <header class="discovery-header">
+<Layout title="Let's Talk Automation - kyros">
+  <div class="contact-page">
+    <header class="contact-header">
       <div class="section-container">
         <div class="header-content">
-          <h1>Book Your Free Discovery Call</h1>
-          <p class="subtitle">No obligation. No pressure. Just clarity on where automation can transform your business.</p>
+          <div class="contact-tag">Contact us</div>
+          <h1>Let's Talk Automation</h1>
+          <p class="subtitle">Drop us a line or book a demo, your ops, powered by kyros.Flow.</p>
         </div>
       </div>
     </header>
 
-    <section class="discovery-content">
+    <section class="contact-content">
       <div class="section-container">
         <div class="content-grid">
           <div class="left-column">
-            <div class="benefits-section">
-              <h2>What You'll Get</h2>
-              <div class="benefit-list">
-                <div class="benefit-item">
-                  <div class="benefit-icon">🎯</div>
-                  <div class="benefit-text">
-                    <h3>Workflow Mapping</h3>
-                    <p>We'll analyze your current processes and identify the 3-5 highest-ROI automation opportunities.</p>
-                  </div>
-                </div>
-                
-                <div class="benefit-item">
-                  <div class="benefit-icon">💰</div>
-                  <div class="benefit-text">
-                    <h3>ROI Calculation</h3>
-                    <p>Clear numbers on time savings, cost reduction, and revenue impact from automation.</p>
-                  </div>
-                </div>
-                
-                <div class="benefit-item">
-                  <div class="benefit-icon">⚡</div>
-                  <div class="benefit-text">
-                    <h3>Implementation Roadmap</h3>
-                    <p>Step-by-step plan to get your first automation live in 4-8 weeks.</p>
-                  </div>
-                </div>
-                
-                <div class="benefit-item">
-                  <div class="benefit-icon">🔒</div>
-                  <div class="benefit-text">
-                    <h3>Zero Risk</h3>
-                    <p>If we don't find opportunities worth pursuing, you pay nothing. Guaranteed.</p>
+            <div class="info-section">
+              <p class="intro-text">Our team is highly dedicated to help you with your automation queries. Just drop us a line through the form & our team will be in touch with you within the same day.</p>
+              
+              <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"kyros helped me automate our quote generation process, saving us 15+ hours weekly and reducing errors by 90%."</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">👤</div>
+                  <div class="author-info">
+                    <strong>Sarah Chen</strong>
+                    <span>Operations Director, TechFlow</span>
                   </div>
                 </div>
               </div>
@@ -56,84 +36,99 @@ import Layout from '../layouts/Layout.astro';
           </div>
           
           <div class="right-column">
-            <div class="booking-form">
-              <h2>Book Your Call</h2>
-              <p class="form-subtitle">Choose a time that works for you. Calls typically last 30-45 minutes.</p>
-              
+            <div class="contact-form-card">
               <form class="contact-form" id="contactForm">
                 <div class="form-group">
+                  <label for="inquiry-type">What can we help you with?</label>
+                  <select id="inquiry-type" name="inquiry-type" required>
+                    <option value="">Select inquiry type</option>
+                    <option value="sales">Sales Inquiry</option>
+                    <option value="support">Support Request</option>
+                    <option value="demo">Demo Setup</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
                   <label for="name">Full Name *</label>
-                  <input type="text" id="name" name="name" required>
+                  <input type="text" id="name" name="name" placeholder="Full name" required>
                 </div>
                 
                 <div class="form-group">
                   <label for="company">Company Name *</label>
-                  <input type="text" id="company" name="company" required>
+                  <input type="text" id="company" name="company" placeholder="Your company" required>
                 </div>
                 
                 <div class="form-group">
                   <label for="email">Email Address *</label>
-                  <input type="email" id="email" name="email" required>
+                  <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
                 
                 <div class="form-group">
                   <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone">
+                  <input type="tel" id="phone" name="phone" placeholder="+1 (000) 000-0000">
                 </div>
                 
                 <div class="form-group">
-                  <label for="industry">Industry</label>
-                  <select id="industry" name="industry">
-                    <option value="">Select your industry</option>
-                    <option value="distributor">Distributor/Wholesaler</option>
-                    <option value="agency">Agency/Marketing</option>
-                    <option value="professional">Professional Services</option>
-                    <option value="manufacturing">Light Manufacturing</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <label for="message">Tell us what you'd like to automate</label>
+                  <textarea id="message" name="message" rows="4" placeholder="Provide any details regarding your automation needs..."></textarea>
                 </div>
                 
-                <div class="form-group">
-                  <label for="message">Tell us about your biggest bottleneck</label>
-                  <textarea id="message" name="message" rows="3" placeholder="What's costing you time or money right now?"></textarea>
+                <div class="form-group checkbox-group">
+                  <label class="checkbox-container">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <span class="checkmark"></span>
+                    By reaching out to us, you agree to our <a href="#" class="privacy-link">Privacy Policy</a>.
+                  </label>
                 </div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                  <span class="btn-text">Book My Free Discovery Call</span>
+                  <span class="btn-text">Send Request</span>
                   <span class="btn-loading" style="display: none;">Sending...</span>
                 </button>
                 
                 <div id="formMessage" class="form-message" style="display: none;"></div>
               </form>
-              
-              <div class="form-footer">
-                <p>🔒 Your information is secure and will never be shared.</p>
-                <p>📞 We'll confirm your booking within 2 hours.</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="social-proof">
+    <section class="support-section">
       <div class="section-container">
-        <h2>Trusted by UK SMEs</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial">
-            <p>"The discovery call opened our eyes to automation opportunities we never knew existed. 10 hours saved weekly."</p>
-            <div class="testimonial-author">
-              <strong>Sarah Chen</strong>
-              <span>Marketing Director, TechFlow</span>
-            </div>
+        <h2>For other dedicated support</h2>
+        <div class="support-cards">
+          <div class="support-card">
+            <div class="support-icon">📧</div>
+            <h3>Email Support</h3>
+            <p>For any general inquiries, please write to us directly.</p>
+            <a href="mailto:hello@kyros.solutions" class="support-btn">hello@kyros.solutions</a>
           </div>
           
-          <div class="testimonial">
-            <p>"kyros delivered exactly what they promised. Our quoting process is now 70% faster."</p>
-            <div class="testimonial-author">
-              <strong>Mike Thompson</strong>
-              <span>Operations Manager, UK Distributors</span>
-            </div>
+          <div class="support-card">
+            <div class="support-icon">📅</div>
+            <h3>Direct Meeting</h3>
+            <p>For priority support, you can schedule a meeting with our team.</p>
+            <a href="/discovery" class="support-btn">Schedule a Meeting</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <div class="section-container">
+        <div class="trust-stats">
+          <div class="stat-item">
+            <div class="stat-number">200%+</div>
+            <div class="stat-label">ROI</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Hours Saved Weekly</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Error Reduction</div>
           </div>
         </div>
       </div>
@@ -142,62 +137,124 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .discovery-page {
+  .contact-page {
     background-color: var(--bg-light);
   }
 
-  .discovery-header {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
-    color: white;
-    padding: 6.3rem 0; /* 5% larger: 6rem to 6.3rem */
+  .contact-header {
+    background: white;
+    color: var(--text-dark);
+    padding: 4rem 0;
     text-align: center;
   }
 
+  .contact-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-orange));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
   .header-content h1 {
-    font-size: 4.2rem; /* 5% larger: 4rem to 4.2rem */
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 1.575rem; /* 5% larger: 1.5rem to 1.575rem */
+    margin-bottom: 1rem;
     line-height: 1.2;
+    color: var(--text-dark);
   }
 
   .subtitle {
-    font-size: 1.575rem; /* 5% larger: 1.5rem to 1.575rem */
-    opacity: 0.9;
+    font-size: 1.2rem;
+    color: #6b7280;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
   }
 
-  .discovery-content {
-    padding: 6.3rem 0; /* 5% larger: 6rem to 6.3rem */
+  .contact-content {
+    padding: 4rem 0;
   }
 
   .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6.3rem; /* 5% larger: 6rem to 6.3rem */
+    gap: 4rem;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .benefits-section h2 {
-    font-size: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
-    margin-bottom: 3.15rem; /* 5% larger: 3rem to 3.15rem */
+  .info-section {
+    padding: 2rem;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
     color: var(--text-dark);
+    margin-bottom: 2rem;
   }
 
-  .benefit-list {
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--accent-blue);
+  }
+
+  .stars {
+    color: #fbbf24;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
     display: flex;
-    flex-direction: column;
-    gap: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
+    align-items: center;
+    gap: 1rem;
   }
 
-  .benefit-item {
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-blue);
+    border-radius: 50%;
     display: flex;
-    gap: 1.575rem; /* 5% larger: 1.5rem to 1.575rem */
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
   }
 
-  .benefit-icon {
+  .author-info strong {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  .author-info span {
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+
+  .contact-form-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
     font-size: 2.625rem; /* 5% larger: 2.5rem to 2.625rem */
     flex-shrink: 0;
   }
@@ -364,6 +421,108 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.05rem; /* 5% larger: 1rem to 1.05rem */
   }
 
+  .support-section {
+    background: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .support-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+  }
+
+  .support-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .support-card {
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .support-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .support-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .support-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+
+  .support-card p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .support-btn {
+    display: inline-block;
+    background: white;
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+  }
+
+  .support-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+  }
+
+  .trust-section {
+    background: var(--bg-light);
+    padding: 4rem 0;
+  }
+
+  .trust-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
   @media (max-width: 768px) {
     .content-grid {
       grid-template-columns: 1fr;
@@ -379,6 +538,10 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .support-cards {
       grid-template-columns: 1fr;
     }
   }
