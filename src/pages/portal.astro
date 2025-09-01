@@ -3,21 +3,17 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Login - kyros Portal">
+<Layout title="kyros.Link">
   <main class="login-page">
     <div class="login-container">
       <div class="login-content">
         <div class="login-header">
-          <div class="logo-section">
-            <img src="/logo.png" alt="kyros" class="login-logo">
-            <h1>Welcome Back</h1>
-            <p>Sign in to your kyros portal</p>
-          </div>
+          <img src="/logo.png" alt="kyros" class="login-logo">
         </div>
 
         <form class="login-form" id="loginForm">
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">Email</label>
             <input 
               type="email" 
               id="email" 
@@ -30,25 +26,19 @@ import Layout from '../layouts/Layout.astro';
 
           <div class="form-group">
             <label for="password">Password</label>
-            <div class="password-input-container">
-              <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                required 
-                placeholder="Enter your password"
-                class="form-input"
-              >
-              <button type="button" class="password-toggle" id="passwordToggle">
-                👁️
-              </button>
-            </div>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              required 
+              placeholder="Enter your password"
+              class="form-input"
+            >
           </div>
 
           <div class="form-options">
             <label class="checkbox-container">
               <input type="checkbox" id="remember" name="remember">
-              <span class="checkmark"></span>
               Remember me
             </label>
             <a href="#" class="forgot-password">Forgot password?</a>
@@ -59,9 +49,7 @@ import Layout from '../layouts/Layout.astro';
             <span class="button-loading" style="display: none;">Signing in...</span>
           </button>
 
-          <div class="login-divider">
-            <span>or</span>
-          </div>
+
 
           <button type="button" class="demo-button">
             Request Demo Access
@@ -69,36 +57,7 @@ import Layout from '../layouts/Layout.astro';
         </form>
 
         <div class="login-footer">
-          <p>Don't have an account? <a href="/discovery" class="signup-link">Book a discovery call</a></p>
-        </div>
-      </div>
-
-      <div class="login-sidebar">
-        <div class="sidebar-content">
-          <h2>Why kyros?</h2>
-          <div class="feature-list">
-            <div class="feature-item">
-              <div class="feature-icon">🎯</div>
-              <div class="feature-text">
-                <h3>ROI-Focused</h3>
-                <p>Every tool delivers measurable returns</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">⚡</div>
-              <div class="feature-text">
-                <h3>Lightweight</h3>
-                <p>No bloat, just practical functionality</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">🔓</div>
-              <div class="feature-text">
-                <h3>Team Enablement</h3>
-                <p>Empower your team, not create dependency</p>
-              </div>
-            </div>
-          </div>
+          <p style="text-align: center;"><a href="/discovery" class="signup-link">Support</a></p>
         </div>
       </div>
     </div>
@@ -106,9 +65,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  // Password toggle functionality
   document.addEventListener('DOMContentLoaded', function() {
-    const passwordToggle = document.getElementById('passwordToggle') as HTMLButtonElement;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     const loginForm = document.getElementById('loginForm') as HTMLFormElement;
     const loginButton = document.getElementById('loginButton') as HTMLButtonElement;
@@ -116,17 +73,10 @@ import Layout from '../layouts/Layout.astro';
     const buttonLoading = document.querySelector('.button-loading') as HTMLElement;
     const demoButton = document.querySelector('.demo-button') as HTMLButtonElement;
 
-    if (!passwordToggle || !passwordInput || !loginForm || !loginButton || !buttonText || !buttonLoading || !demoButton) {
+    if (!passwordInput || !loginForm || !loginButton || !buttonText || !buttonLoading || !demoButton) {
       console.error('Some elements not found');
       return;
     }
-
-    // Toggle password visibility
-    passwordToggle.addEventListener('click', function() {
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
-      passwordToggle.textContent = type === 'password' ? '👁️' : '🙈';
-    });
 
     // Form submission
     loginForm.addEventListener('submit', function(e) {
@@ -167,44 +117,39 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .login-container {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    max-width: 1200px;
+    max-width: 800px;
     width: 100%;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
 
   .login-content {
-    padding: 4rem 3rem;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .login-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   .login-logo {
-    height: 60px;
+    height: 50px;
     width: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .login-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 0.5rem;
-  }
-
-  .login-header p {
-    font-size: 1.1rem;
-    color: #6b7280;
+    margin: 0;
   }
 
   .login-form {
@@ -240,27 +185,7 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
-  .password-input-container {
-    position: relative;
-  }
 
-  .password-toggle {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 0.25rem;
-    border-radius: 4px;
-    transition: background 0.2s ease;
-  }
-
-  .password-toggle:hover {
-    background: #f3f4f6;
-  }
 
   .form-options {
     display: flex;
@@ -316,28 +241,8 @@ import Layout from '../layouts/Layout.astro';
     cursor: not-allowed;
   }
 
-  .login-divider {
-    text-align: center;
-    margin: 2rem 0;
-    position: relative;
-  }
 
-  .login-divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #e5e7eb;
-  }
 
-  .login-divider span {
-    background: white;
-    padding: 0 1rem;
-    color: #6b7280;
-    font-size: 0.9rem;
-  }
 
   .demo-button {
     background: white;
