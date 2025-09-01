@@ -4,8 +4,8 @@
 /* CSS Variables for brand color palette */
 :root {
   --bg-light: #F8F9FA;
-  --text-dark: #212529;
-  --text-black: #000000;
+  --text-dark: #033463;
+  --text-black: #033463;
   --accent-blue: #007BFF;
   --accent-orange: #FF6B35;
   --accent-purple: #8B5CF6;
@@ -34,7 +34,7 @@ html, body {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background-color: #F8F9FA;
-  color: var(--text-dark);
+  color: #033463;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,12 +43,13 @@ body {
 /* Global Typographic Hierarchy - MODERN CLAMP() APPROACH - 5% LARGER */
 h1, h2, h3, h4, h5, h6 {
   text-align: left;
+  color: #033463 !important;
 }
 
 h1 { 
   font-size: clamp(2.625rem, 5.25vw, 4.725rem); /* 5% larger: 42px to 75.6px */
   font-weight: 700;
-  color: var(--text-dark);
+  color: #033463 !important;
   margin-bottom: 2.625rem; /* 5% larger: 40px */
   line-height: 1.2;
 }
@@ -56,7 +57,7 @@ h1 {
 h2 { 
   font-size: clamp(1.89rem, 4.2vw, 2.625rem); /* 5% larger: 30.24px to 42px */
   font-weight: 700;
-  color: var(--text-dark);
+  color: #033463 !important;
   margin-bottom: 2.625rem; /* 5% larger: 40px */
   line-height: 1.2;
 }
@@ -64,7 +65,7 @@ h2 {
 h3 { 
   font-size: clamp(1.26rem, 2.625vw, 1.575rem); /* 5% larger: 20.16px to 25.2px */
   font-weight: 600;
-  color: var(--text-dark);
+  color: #033463 !important;
   margin-bottom: 1.575rem; /* 5% larger: 30px */
   line-height: 1.3;
 }
@@ -72,6 +73,17 @@ h3 {
 /* Global paragraph alignment */
 p {
   text-align: left;
+  color: #033463 !important;
+}
+
+/* Universal text color for all elements */
+* {
+  color: #033463;
+}
+
+/* Ensure specific elements override the universal rule when needed */
+.nav-demo, .nav-login, .cta-button {
+  color: inherit;
 }
 
 /* Global Container - Better 4K utilization - 5% LARGER */
