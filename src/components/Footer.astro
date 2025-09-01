@@ -11,25 +11,14 @@
       </div>
       
       <div class="footer-section">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#process">Strategic Consulting</a></li>
-          <li><a href="#process">Process Optimization</a></li>
-          <li><a href="#process">Team Development</a></li>
-          <li><a href="#process">Innovation Workshops</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
         <h4>Contact</h4>
-        <p>Ready to get started?</p>
-                  <a href="mailto:hello@kyros.com" class="contact-email">hello@kyros.com</a>
+        <a href="mailto:hello@kyros.com" class="contact-email">hello@kyros.com</a>
         <p>Let's discuss how we can help you achieve your goals.</p>
       </div>
     </div>
     
     <div class="footer-bottom">
-              <p>&copy; 2025 kyros. All rights reserved.</p>
+      <p>&copy; 2025 kyros. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -38,33 +27,35 @@
   footer {
     background-color: var(--text-black);
     color: white;
+    padding: 1rem 0;
   }
 
   .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .footer-section h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .footer-section h4 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
     color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .footer-section p {
     color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
   }
 
   .social-links {
@@ -116,28 +107,34 @@
 
   .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 2rem;
+    padding-top: 0.75rem;
     text-align: center;
   }
 
   .footer-bottom p {
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
+    font-size: 0.8rem;
   }
 
   @media (max-width: 768px) {
+    footer {
+      padding: 0.75rem 0;
+    }
+
     .footer-content {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1rem;
       text-align: center;
+      margin-bottom: 1rem;
     }
 
     .footer-section h3 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
 
     .footer-section h4 {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .social-links {
@@ -145,7 +142,7 @@
     }
 
     .footer-bottom {
-      padding-top: 1.5rem;
+      padding-top: 0.5rem;
     }
   }
 </style>
