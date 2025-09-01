@@ -1,0 +1,452 @@
+---
+// Login page for kyros portal
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Login - kyros Portal">
+  <main class="login-page">
+    <div class="login-container">
+      <div class="login-content">
+        <div class="login-header">
+          <div class="logo-section">
+            <img src="/logo.png" alt="kyros" class="login-logo">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your kyros portal</p>
+          </div>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              placeholder="Enter your email"
+              class="form-input"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input-container">
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required 
+                placeholder="Enter your password"
+                class="form-input"
+              >
+              <button type="button" class="password-toggle" id="passwordToggle">
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-container">
+              <input type="checkbox" id="remember" name="remember">
+              <span class="checkmark"></span>
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-button">
+            <span class="button-text">Sign In</span>
+            <span class="button-loading" style="display: none;">Signing in...</span>
+          </button>
+
+          <div class="login-divider">
+            <span>or</span>
+          </div>
+
+          <button type="button" class="demo-button">
+            Request Demo Access
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <p>Don't have an account? <a href="/discovery" class="signup-link">Book a discovery call</a></p>
+        </div>
+      </div>
+
+      <div class="login-sidebar">
+        <div class="sidebar-content">
+          <h2>Why kyros?</h2>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">🎯</div>
+              <div class="feature-text">
+                <h3>ROI-Focused</h3>
+                <p>Every tool delivers measurable returns</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <div class="feature-text">
+                <h3>Lightweight</h3>
+                <p>No bloat, just practical functionality</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔓</div>
+              <div class="feature-text">
+                <h3>Team Enablement</h3>
+                <p>Empower your team, not create dependency</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Password toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const passwordToggle = document.getElementById('passwordToggle') as HTMLButtonElement;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const loginForm = document.getElementById('loginForm') as HTMLFormElement;
+    const loginButton = document.getElementById('loginButton') as HTMLButtonElement;
+    const buttonText = document.querySelector('.button-text') as HTMLElement;
+    const buttonLoading = document.querySelector('.button-loading') as HTMLElement;
+    const demoButton = document.querySelector('.demo-button') as HTMLButtonElement;
+
+    if (!passwordToggle || !passwordInput || !loginForm || !loginButton || !buttonText || !buttonLoading || !demoButton) {
+      console.error('Some elements not found');
+      return;
+    }
+
+    // Toggle password visibility
+    passwordToggle.addEventListener('click', function() {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      passwordToggle.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+
+    // Form submission
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      buttonText.style.display = 'none';
+      buttonLoading.style.display = 'inline';
+      loginButton.disabled = true;
+
+      // Simulate login process
+      setTimeout(() => {
+        // For now, just show an alert
+        alert('Login functionality coming soon! This is a demo page.');
+        
+        // Reset button state
+        buttonText.style.display = 'inline';
+        buttonLoading.style.display = 'none';
+        loginButton.disabled = false;
+      }, 2000);
+    });
+
+    // Demo access button
+    demoButton.addEventListener('click', function() {
+      window.location.href = '/demo';
+    });
+  });
+</script>
+
+<style>
+  .login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%);
+    padding: 2rem 1rem;
+  }
+
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .login-content {
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .login-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .login-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .login-header p {
+    font-size: 1.1rem;
+    color: #6b7280;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .password-input-container {
+    position: relative;
+  }
+
+  .password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .password-toggle:hover {
+    background: #f3f4f6;
+  }
+
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #6b7280;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-blue);
+  }
+
+  .forgot-password {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+  .login-button {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .login-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+
+  .login-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .login-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .login-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e5e7eb;
+  }
+
+  .login-divider span {
+    background: white;
+    padding: 0 1rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+
+  .demo-button {
+    background: white;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .demo-button:hover {
+    background: var(--accent-blue);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .login-footer p {
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+
+  .signup-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+
+  .login-sidebar {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
+    color: white;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-text p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .login-container {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+    }
+
+    .login-sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .login-content {
+      padding: 3rem 2rem;
+    }
+
+    .login-header h1 {
+      font-size: 2rem;
+    }
+
+    .form-options {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+  }
+</style>
