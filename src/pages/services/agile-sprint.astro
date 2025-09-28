@@ -1,0 +1,432 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const phases = [
+  {
+    name: 'Week 0: Intake',
+    summary: 'Capture context, stakeholders, systems, and success criteria before sprint kick-off.'
+  },
+  {
+    name: 'Week 1: Discover',
+    summary: 'Shadow, map, and instrument the current workflow. Agree on the smallest valuable slice to ship.'
+  },
+  {
+    name: 'Week 2: Design',
+    summary: 'Prototype flows, validate edge cases, and confirm data contracts. Prep backlog for build.'
+  },
+  {
+    name: 'Week 3: Build',
+    summary: 'Develop automations, integrations, and UI. Demo in-the-loop for fast feedback.'
+  },
+  {
+    name: 'Week 4: Launch',
+    summary: 'Stabilise in production, enable teams, and hand over documentation complete with runbooks.'
+  }
+];
+
+const deliverables = [
+  'Operations brief: process map, opportunity sizing, risk register',
+  'Production-ready automation with monitoring hooks and logging',
+  'Adoption toolkit: onboarding checklist, Loom walkthroughs, FAQ',
+  'Measurement plan with leading indicators and ROI checkpoints',
+  'Backlog of follow-on improvements ranked by effort and impact'
+];
+
+const faq = [
+  {
+    question: 'Who is the Agile Sprint for?',
+    answer: 'Teams who already know the problem and need it solved fast, stakeholders who value shipping over slideware, and environments where change adoption matters as much as code quality.'
+  },
+  {
+    question: 'What does a sprint cost?',
+    answer: 'Use this paragraph to insert transparent pricing once finalised (flat fee, tiered, or usage-based). Include what is included vs optional add-ons.'
+  },
+  {
+    question: 'How do we keep momentum afterwards?',
+    answer: 'Layer in subscription toolkits, training retainers, or quarterly optimisations. This placeholder copy can shift once the post-sprint offers are defined.'
+  }
+];
+---
+
+<Layout title="Agile Sprint - Kyros" description="Template for Kyros flagship Agile Sprint service.">
+  <Navigation />
+
+  <main class="sprint">
+    <section class="sprint-hero">
+      <div class="section-container">
+        <div class="hero-body">
+          <p class="eyebrow">Flagship engagement</p>
+          <h1>The Agile Sprint</h1>
+          <p class="lead">A four-week container to diagnose, design, and deploy the automation your team needs. Replace the placeholder narrative with your refined pitch, proof points, and pricing once research lands.</p>
+          <div class="hero-actions">
+            <a class="cta-primary" href="/discovery">Book a sprint scoping call</a>
+            <a class="cta-secondary" href="/services">Back to services</a>
+          </div>
+        </div>
+        <aside class="hero-sidebar">
+          <div class="metric-card">
+            <p class="tag">Snapshot</p>
+            <ul>
+              <li><strong>Duration:</strong> 4 weeks (+ optional 2-week stabilise)</li>
+              <li><strong>Team:</strong> Principal operator, automation engineer, product designer</li>
+              <li><strong>Output:</strong> Production workflow + enablement + ROI instrumentation</li>
+            </ul>
+            <p class="note">Update the roles, cadence, and output once the delivery model is final.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="phase-roadmap">
+      <div class="section-container">
+        <header>
+          <h2>How the sprint runs</h2>
+          <p>Each phase has rituals, artefacts, and sign-offs. Placeholder text explains the flow today—swap in real workshop names, cadence, or tooling later.</p>
+        </header>
+        <div class="phase-grid">
+          {phases.map((phase) => (
+            <article class="phase-card">
+              <h3>{phase.name}</h3>
+              <p>{phase.summary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes">
+      <div class="section-container">
+        <div class="outcomes-grid">
+          <div class="outcomes-copy">
+            <h2>What you walk away with</h2>
+            <p>Use these bullets to outline tangible deliverables. Swap in screenshots, metrics, and branded artefact names once the marketing kit is ready.</p>
+            <ul>
+              {deliverables.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="outcomes-placeholder">
+            <div class="placeholder">
+              <span>Insert product imagery / dashboard mockups here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="enablement">
+      <div class="section-container">
+        <div class="enablement-card">
+          <h2>Keep adoption front and centre</h2>
+          <p>This slot is perfect for testimonials, training stats, or a short case snippet showing adoption success. Until then, the copy reminds visitors adoption is part of the core offer.</p>
+          <div class="enablement-list">
+            <div>
+              <h3>Working sessions</h3>
+              <p>Daily stand-ups, mid-week playback, and Friday show-and-tell keep progress transparent.</p>
+            </div>
+            <div>
+              <h3>Documentation</h3>
+              <p>Every build ships with architecture notes, SOPs, and a troubleshooting tree.</p>
+            </div>
+            <div>
+              <h3>Handover</h3>
+              <p>Runbooks, ownership matrix, and a 30-day support window ensure teams feel in control.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="section-container">
+        <div class="faq-header">
+          <h2>Questions teams usually ask</h2>
+          <p>Replace the placeholders with real objections or procurement questions once you have them gathered.</p>
+        </div>
+        <div class="faq-list">
+          {faq.map((item) => (
+            <details class="faq-item">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="section-container">
+        <div class="cta-card">
+          <div>
+            <h2>Ready to scope your sprint?</h2>
+            <p>Drop us a note with your challenge and existing stack. We will return with scoping questions and availability within one business day.</p>
+          </div>
+          <a class="cta-primary" href="/discovery">Start the discovery</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .sprint-hero {
+    background: linear-gradient(135deg, rgba(3, 52, 99, 0.06), rgba(13, 110, 253, 0.18));
+  }
+
+  .sprint-hero .section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-body {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: #102a43;
+    max-width: 60ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-primary {
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: #ffffff;
+  }
+
+  .cta-secondary {
+    border: 2px solid rgba(3, 52, 99, 0.2);
+    color: #033463;
+  }
+
+  .cta-primary:hover,
+  .cta-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(3, 52, 99, 0.18);
+  }
+
+  .hero-sidebar {
+    display: grid;
+  }
+
+  .metric-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 26px 60px rgba(3, 52, 99, 0.12);
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .metric-card ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .metric-card li strong {
+    color: #033463;
+  }
+
+  .metric-card .note {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .tag {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    color: #2563eb;
+  }
+
+  .phase-roadmap {
+    background: #ffffff;
+  }
+
+  .phase-roadmap header {
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .phase-card {
+    background: var(--bg-light);
+    border-radius: 18px;
+    padding: 1.75rem;
+    border: 1px solid rgba(3, 52, 99, 0.08);
+    min-height: 160px;
+  }
+
+  .outcomes {
+    background: #f5f7fb;
+  }
+
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .outcomes-copy ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .outcomes-copy li {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+
+  .outcomes-copy li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #0d6efd;
+  }
+
+  .outcomes-placeholder .placeholder {
+    border: 2px dashed rgba(3, 52, 99, 0.25);
+    border-radius: 20px;
+    padding: 4rem;
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  .enablement {
+    background: #ffffff;
+  }
+
+  .enablement-card {
+    background: #0b1f33;
+    color: #dbeafe;
+    border-radius: 24px;
+    padding: 3rem;
+    display: grid;
+    gap: 2rem;
+    box-shadow: 0 36px 80px rgba(3, 52, 99, 0.2);
+  }
+
+  .enablement-card h2 {
+    color: #ffffff;
+  }
+
+  .enablement-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .enablement-list h3 {
+    color: #ffffff;
+  }
+
+  .faq {
+    background: #ffffff;
+  }
+
+  .faq-header {
+    max-width: 55ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    border-radius: 16px;
+    background: var(--bg-light);
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(3, 52, 99, 0.08);
+  }
+
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #033463;
+  }
+
+  .faq-item p {
+    margin-top: 0.75rem;
+    color: #1f2937;
+  }
+
+  .cta {
+    background: #f5f7fb;
+  }
+
+  .cta-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 24px 55px rgba(3, 52, 99, 0.12);
+  }
+
+  @media (max-width: 1280px) {
+    .sprint-hero .section-container,
+    .outcomes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .phase-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .enablement-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .phase-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .enablement-card,
+    .cta-card {
+      padding: 2.25rem;
+    }
+  }
+</style>

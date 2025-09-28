@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kyros PRD Explorer</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      :root {
+        --kyros-navy: #033463;
+        --kyros-royal: #0d6efd;
+        --kyros-sky: #e8f1ff;
+        --kyros-slate: #475569;
+        --kyros-ice: #f5f9ff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--kyros-ice);
+        color: var(--kyros-navy);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        padding: 3rem 1.5rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(3, 52, 99, 0.92), rgba(13, 110, 253, 0.85));
+        color: #fff;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+        opacity: 0.85;
+        max-width: 640px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem 3rem;
+        max-width: 1100px;
+        width: 100%;
+        margin: -3rem auto 0;
+      }
+
+      .panel {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(3, 52, 99, 0.12);
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(3, 52, 99, 0.08);
+      }
+
+      .upload-section {
+        transition: all 0.3s ease;
+        border: 2px dashed rgba(13, 110, 253, 0.35);
+        background: rgba(232, 241, 255, 0.4);
+        text-align: center;
+      }
+
+      .upload-section.dragover {
+        border-color: var(--kyros-royal);
+        background: rgba(232, 241, 255, 0.75);
+      }
+
+      .upload-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .upload-section p {
+        color: var(--kyros-slate);
+        line-height: 1.6;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(13, 110, 253, 0.12);
+        color: var(--kyros-royal);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        font-weight: 500;
+        font-size: 0.85rem;
+        margin: 1rem auto 1.25rem;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(120deg, var(--kyros-royal), #1b74ff);
+        color: #fff;
+        border: none;
+        padding: 0.85rem 1.8rem;
+        font-size: 1rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(3, 52, 99, 0.2);
+      }
+
+      .button.secondary {
+        background: rgba(3, 52, 99, 0.1);
+        color: var(--kyros-navy);
+      }
+
+      .button.secondary:hover {
+        box-shadow: none;
+        transform: none;
+      }
+
+      .button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .file-info {
+        margin-top: 1.5rem;
+        padding: 1rem 1.2rem;
+        background: rgba(3, 52, 99, 0.05);
+        border-radius: 12px;
+        display: none;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      .file-info strong {
+        color: var(--kyros-royal);
+      }
+
+      .callout {
+        margin-top: 1.5rem;
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        background: rgba(248, 211, 70, 0.18);
+        color: #7a5c00;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .loading-spinner {
+        width: 42px;
+        height: 42px;
+        border: 4px solid rgba(3, 52, 99, 0.15);
+        border-top: 4px solid var(--kyros-royal);
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+        margin: 0 auto 1rem;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error {
+        display: none;
+        background: rgba(255, 80, 80, 0.15);
+        color: #a5001a;
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .preview-section {
+        display: none;
+      }
+
+      .prototype-preview {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(3, 52, 99, 0.12);
+        box-shadow: 0 16px 45px rgba(3, 52, 99, 0.12);
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 520px;
+      }
+
+      .preview-header {
+        background: linear-gradient(120deg, rgba(3, 52, 99, 0.95), rgba(13, 110, 253, 0.85));
+        color: #fff;
+        padding: 1.1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .preview-header h3 {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .preview-content {
+        flex: 1;
+        background: var(--kyros-ice);
+      }
+
+      #prototypeFrame {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        border: none;
+        background: #fff;
+      }
+
+      .helper-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.8rem;
+      }
+
+      .helper-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1.2rem 1.4rem;
+        box-shadow: 0 16px 35px rgba(3, 52, 99, 0.08);
+        border: 1px solid rgba(13, 110, 253, 0.12);
+      }
+
+      .helper-card h4 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        color: var(--kyros-navy);
+      }
+
+      .helper-card p {
+        font-size: 0.9rem;
+        color: var(--kyros-slate);
+        line-height: 1.55;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding: 2.5rem 1.25rem 1.75rem;
+        }
+
+        .panel {
+          padding: 1.75rem;
+        }
+
+        .preview-header {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Kyros PRD Explorer</h1>
+      <p class="subtitle">
+        Upload your Product Requirements Document and instantly transform it into
+        a clean, stakeholder-friendly walkthrough using Kyros styling.
+      </p>
+    </header>
+
+    <main class="container">
+      <div class="panel upload-section" id="uploadSection">
+        <span class="badge">Self-serve beta</span>
+        <h2>Drop in your PRD</h2>
+        <p>
+          We’ll parse the key sections, normalise the structure, and present it
+          in a clickable, Kyros-branded prototype.
+        </p>
+        <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--kyros-slate)">
+          Markdown (.md) or plain text (.txt) works best. PDF support is coming
+          soon.
+        </p>
+
+        <input type="file" id="fileInput" accept=".md,.txt" />
+        <div style="margin-top: 1.75rem">
+          <button
+            class="button"
+            type="button"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            Choose a file
+          </button>
+          <button
+            class="button secondary"
+            type="button"
+            onclick="generatePrototype()"
+            id="generateBtn"
+            disabled
+          >
+            Generate prototype
+          </button>
+        </div>
+        <div class="file-info" id="fileInfo"></div>
+        <div class="callout" id="calloutMessage"></div>
+      </div>
+
+      <div class="panel" style="padding: 2rem 2.2rem">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem">What you get</h3>
+        <div class="helper-grid">
+          <div class="helper-card">
+            <h4>Structured storyline</h4>
+            <p>
+              We break the PRD into problem, goals, flows, and requirements so
+              stakeholders can scan it at a glance.
+            </p>
+          </div>
+          <div class="helper-card">
+            <h4>Automation ready</h4>
+            <p>
+              The prototype format mirrors how Kyros scopes sprints—making it
+              easier to spot automation opportunities.
+            </p>
+          </div>
+          <div class="helper-card">
+            <h4>Downloadable HTML</h4>
+            <p>
+              Share the output, annotate it, or use it as a living spec in your
+              discovery workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="error" id="error" role="alert"></div>
+
+      <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p style="color: var(--kyros-navy); font-weight: 600">Formatting your PRD...</p>
+        <p style="color: var(--kyros-slate); font-size: 0.9rem">
+          We’re pulling out the story, metrics, and flows.
+        </p>
+      </div>
+
+      <section class="preview-section" id="previewSection">
+        <div class="prototype-preview">
+          <div class="preview-header">
+            <h3>Prototype preview</h3>
+            <button class="button secondary" type="button" onclick="downloadPrototype()">
+              Download HTML snapshot
+            </button>
+          </div>
+          <div class="preview-content">
+            <iframe id="prototypeFrame" title="PRD prototype preview"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const fileInput = document.getElementById('fileInput');
+      const fileInfo = document.getElementById('fileInfo');
+      const calloutMessage = document.getElementById('calloutMessage');
+      const generateBtn = document.getElementById('generateBtn');
+      const uploadSection = document.getElementById('uploadSection');
+      const loadingEl = document.getElementById('loading');
+      const previewSection = document.getElementById('previewSection');
+      const errorEl = document.getElementById('error');
+      const prototypeFrame = document.getElementById('prototypeFrame');
+
+      let uploadedFile = null;
+      let rawContent = '';
+      let generatedHTML = '';
+
+      uploadSection.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadSection.classList.add('dragover');
+      });
+
+      uploadSection.addEventListener('dragleave', () => {
+        uploadSection.classList.remove('dragover');
+      });
+
+      uploadSection.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadSection.classList.remove('dragover');
+        if (e.dataTransfer.files.length) {
+          handleFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          handleFile(e.target.files[0]);
+        }
+      });
+
+      function handleFile(file) {
+        const validExtensions = ['.md', '.txt'];
+        const ext = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
+
+        if (!validExtensions.includes(ext)) {
+          showError('Please upload a Markdown (.md) or text (.txt) file for now.');
+          generateBtn.disabled = true;
+          fileInfo.style.display = 'none';
+          return;
+        }
+
+        uploadedFile = file;
+        readTextFile(file)
+          .then((content) => {
+            rawContent = content;
+            generateBtn.disabled = false;
+            generateBtn.textContent = 'Generate prototype';
+            fileInfo.style.display = 'block';
+            fileInfo.innerHTML = `<strong>Loaded:</strong> ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+            calloutMessage.style.display = 'block';
+            calloutMessage.textContent = 'Want to keep context? Use headings like "# Problem" or bullet lists for requirements—we mirror them in the output.';
+            clearError();
+          })
+          .catch((err) => {
+            showError('Could not read the file. Try another format.');
+            console.error(err);
+          });
+      }
+
+      function readTextFile(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.onerror = reject;
+          reader.readAsText(file);
+        });
+      }
+
+      function parseContent(raw) {
+        const lines = raw.split(/\r?\n/);
+        const sections = [];
+        let current = null;
+
+        const pushCurrent = () => {
+          if (current) {
+            current.paragraphs = current.paragraphs.filter(Boolean);
+            current.bullets = current.bullets.filter(Boolean);
+            sections.push(current);
+          }
+          current = null;
+        };
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed) continue;
+
+          const headingMatch = trimmed.match(/^#{1,3}\s+(.*)/);
+          if (headingMatch) {
+            pushCurrent();
+            current = {
+              title: headingMatch[1].trim(),
+              paragraphs: [],
+              bullets: [],
+            };
+            continue;
+          }
+
+          const bulletMatch = trimmed.match(/^[-*+]\s+(.*)/);
+          if (bulletMatch) {
+            if (!current) {
+              current = { title: 'Details', paragraphs: [], bullets: [] };
+            }
+            current.bullets.push(bulletMatch[1].trim());
+            continue;
+          }
+
+          if (!current) {
+            current = { title: 'Overview', paragraphs: [], bullets: [] };
+          }
+          current.paragraphs.push(trimmed);
+        }
+
+        pushCurrent();
+        return sections.length ? sections : [{ title: 'Overview', paragraphs: [raw], bullets: [] }];
+      }
+
+      function buildPrototype(content) {
+        const sections = parseContent(content);
+        const headline = sections[0]?.title || 'Product Requirements';
+        const summaryParagraph = sections[0]?.paragraphs?.[0] || 'Product summary goes here.';
+
+        const htmlSections = sections
+          .map((section) => {
+            const paragraphs = section.paragraphs
+              .map((p) => `<p>${escapeHtml(p)}</p>`)
+              .join('');
+            const bullets = section.bullets.length
+              ? `<ul>${section.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('')}</ul>`
+              : '';
+            return `
+              <article class="section-card">
+                <div class="section-label">${escapeHtml(section.title)}</div>
+                ${paragraphs}
+                ${bullets}
+              </article>
+            `;
+          })
+          .join('');
+
+        return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kyros PRD Prototype</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      :root {
+        --kyros-navy: #033463;
+        --kyros-royal: #0d6efd;
+        --kyros-slate: #475569;
+        --kyros-ice: #f5f9ff;
+        --kyros-card: rgba(255, 255, 255, 0.9);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--kyros-ice);
+        color: var(--kyros-navy);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      .hero {
+        padding: 3.5rem 1.5rem 2.5rem;
+        background: linear-gradient(120deg, rgba(3, 52, 99, 0.95), rgba(13, 110, 253, 0.85));
+        color: #fff;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .hero p {
+        max-width: 720px;
+        margin: 0 auto;
+        opacity: 0.88;
+        font-size: 1.05rem;
+      }
+      .layout {
+        max-width: 960px;
+        margin: -3.5rem auto 3rem;
+        padding: 0 1.5rem;
+      }
+      .summary-card {
+        background: var(--kyros-card);
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(3, 52, 99, 0.15);
+        padding: 2.25rem;
+        border: 1px solid rgba(13, 110, 253, 0.15);
+        margin-bottom: 2rem;
+      }
+      .summary-card h2 { font-size: 1.5rem; margin-bottom: 0.85rem; }
+      .summary-card p { color: rgba(3, 52, 99, 0.92); }
+      .sections {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .section-card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 1.8rem 2rem;
+        border: 1px solid rgba(3, 52, 99, 0.12);
+        box-shadow: 0 16px 35px rgba(3, 52, 99, 0.08);
+      }
+      .section-label {
+        display: inline-block;
+        font-weight: 600;
+        color: var(--kyros-royal);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 0.85rem;
+      }
+      .section-card p {
+        color: var(--kyros-slate);
+        margin-bottom: 0.9rem;
+      }
+      .section-card ul {
+        padding-left: 1.4rem;
+        color: var(--kyros-slate);
+      }
+      footer {
+        padding: 2rem 1.5rem;
+        text-align: center;
+        color: rgba(3, 52, 99, 0.7);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <h1>${escapeHtml(headline)}</h1>
+      <p>${escapeHtml(summaryParagraph)}</p>
+    </section>
+    <main class="layout">
+      <section class="summary-card">
+        <h2>Snapshot</h2>
+        <p>
+          This draft was auto-generated by Kyros to give your team a clean
+          overview of the PRD. Use it to align stakeholders, highlight the
+          automation opportunities, and decide what ships first.
+        </p>
+      </section>
+      <section class="sections">
+        ${htmlSections}
+      </section>
+    </main>
+    <footer>
+      Prepared with the Kyros discovery playbook. Ready for a deeper dive? We
+      can turn this into a sprint-ready plan in under two weeks.
+    </footer>
+  </body>
+</html>`;
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function generatePrototype() {
+        if (!uploadedFile || !rawContent.trim()) {
+          showError('Add a PRD file before generating the prototype.');
+          return;
+        }
+
+        clearError();
+        loadingEl.style.display = 'block';
+        previewSection.style.display = 'none';
+
+        setTimeout(() => {
+          try {
+            generatedHTML = buildPrototype(rawContent);
+            renderPrototype(generatedHTML);
+            loadingEl.style.display = 'none';
+            previewSection.style.display = 'block';
+          } catch (err) {
+            console.error(err);
+            showError('Something went wrong while formatting your PRD.');
+            loadingEl.style.display = 'none';
+          }
+        }, 450);
+      }
+
+      function renderPrototype(html) {
+        const iframeDoc = prototypeFrame.contentDocument || prototypeFrame.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(html);
+        iframeDoc.close();
+      }
+
+      function downloadPrototype() {
+        if (!generatedHTML) {
+          showError('Generate a prototype first.');
+          return;
+        }
+
+        const blob = new Blob([generatedHTML], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'kyros-prd-prototype.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+      function showError(message) {
+        errorEl.textContent = message;
+        errorEl.style.display = message ? 'block' : 'none';
+      }
+
+      function clearError() {
+        showError('');
+      }
+    </script>
+  </body>
+</html>

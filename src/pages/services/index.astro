@@ -1,0 +1,355 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { subscriptionTools } from '../../data/subscriptionTools.js';
+
+const sprintHighlights = [
+  '4-week core build with optional 2-week stabilise phase',
+  'Embed with your operators to map reality before we touch code',
+  'Launch with enablement, documentation, and clear ownership transitions'
+];
+---
+
+<Layout title="Services - Kyros" description="Overview of Kyros services: Agile Sprint delivery and subscription tools.">
+  <Navigation />
+
+  <main class="services">
+    <section class="services-hero">
+      <div class="section-container">
+        <div class="hero-content">
+          <p class="eyebrow">What we offer</p>
+          <h1>From first automation to always-on improvements.</h1>
+          <p class="lead">Pick the engagement that meets you where you are. The flagship Agile Sprint for net-new build-outs. Subscription toolkits when you need steady, opinionated instrumentation. All copy is placeholder—swap when messaging is final.</p>
+          <div class="cta-row">
+            <a class="cta-primary" href="/services/agile-sprint">Explore the Agile Sprint</a>
+            <a class="cta-secondary" href="/discovery">Book a walkthrough</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>At a glance</h3>
+          <ul>
+            <li><strong>Core service:</strong> Agile Sprint (build and launch bespoke automation)</li>
+            <li><strong>Support layer:</strong> Subscription tools for monitoring, insights, and process packs</li>
+            <li><strong>Engagement sizes:</strong> Ideal for teams 10–250 with clear bottlenecks to unblock</li>
+          </ul>
+          <p class="note">Replace these bullets with positioning statements, ICP details, or proof once research is in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sprint-highlight">
+      <div class="section-container">
+        <div class="highlight-card">
+          <header>
+            <p class="eyebrow">Flagship engagement</p>
+            <h2>The Agile Sprint</h2>
+            <p>Rapid, accountable delivery to get a production-ready automation stood up with adoption built-in. Use this block to summarise the sprint without repeating the detail page.</p>
+          </header>
+          <div class="highlight-body">
+            <ul class="highlight-list">
+              {sprintHighlights.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <div class="highlight-cta">
+              <a class="cta-primary" href="/services/agile-sprint">See the sprint structure</a>
+              <a class="cta-link" href="/case-studies">Browse case studies</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscriptions">
+      <div class="section-container">
+        <div class="subscriptions-header">
+          <h2>Subscription toolkits</h2>
+          <p>These ready-to-run offerings keep momentum after the sprint. Swap the placeholder blurbs and pricing notes once the product catalogue is locked.</p>
+        </div>
+        <div class="tool-grid">
+          {subscriptionTools.map((tool) => (
+            <article class="tool-card">
+              <h3>{tool.name}</h3>
+              <p class="persona">For: {tool.persona}</p>
+              <p>{tool.summary}</p>
+              <ul>
+                {tool.features.slice(0, 3).map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+              <div class="tool-footer">
+                <span class="pricing-note">{tool.pricingNote}</span>
+                <a class="cta-link" href={`/services/subscriptions/${tool.slug}`}>View template</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="next-step">
+      <div class="section-container">
+        <div class="next-step-card">
+          <div>
+            <h2>Not sure where to start?</h2>
+            <p>Outline your challenge, drop in metrics if you have them, and we will recommend the right entry point. This CTA will later link to the diagnostic form you mentioned.</p>
+          </div>
+          <a class="cta-primary" href="/discovery">Talk with Kyros</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .services-hero {
+    background: #ffffff;
+  }
+
+  .services-hero .section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin-bottom: 1.75rem;
+    max-width: 60ch;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary,
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-primary {
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: white;
+  }
+
+  .cta-secondary {
+    border: 2px solid rgba(3, 52, 99, 0.16);
+    color: #033463;
+  }
+
+  .cta-link {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: #0d6efd;
+  }
+
+  .cta-primary:hover,
+  .cta-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(3, 52, 99, 0.12);
+  }
+
+  .hero-card {
+    background: var(--bg-light);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 24px 60px rgba(3, 52, 99, 0.08);
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .hero-card ul {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+  }
+
+  .hero-card li strong {
+    color: #033463;
+  }
+
+  .hero-card .note {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .sprint-highlight {
+    background: #f5f7fb;
+  }
+
+  .highlight-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 26px 65px rgba(3, 52, 99, 0.08);
+    display: grid;
+    gap: 2rem;
+  }
+
+  .highlight-body {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .highlight-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .highlight-list li {
+    padding-left: 1.75rem;
+    position: relative;
+  }
+
+  .highlight-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+  }
+
+  .highlight-cta {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+
+  .subscriptions {
+    background: #ffffff;
+  }
+
+  .subscriptions-header {
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .tool-card {
+    background: var(--bg-light);
+    border-radius: 20px;
+    padding: 2.25rem;
+    display: grid;
+    gap: 1.25rem;
+    border: 1px solid rgba(3, 52, 99, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px rgba(3, 52, 99, 0.12);
+  }
+
+  .tool-card ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .tool-card ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: #1f2937;
+  }
+
+  .tool-card ul li::before {
+    content: '↘';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  .persona {
+    font-size: 0.95rem;
+    color: #4b5563;
+  }
+
+  .tool-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pricing-note {
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .next-step {
+    background: #f5f7fb;
+  }
+
+  .next-step-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 24px 50px rgba(3, 52, 99, 0.08);
+  }
+
+  @media (max-width: 1180px) {
+    .services-hero .section-container {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-body {
+      grid-template-columns: 1fr;
+    }
+
+    .tool-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tool-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-card,
+    .next-step-card {
+      padding: 2.25rem;
+    }
+  }
+</style>

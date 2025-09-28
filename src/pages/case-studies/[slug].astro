@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { caseStudies } from '../../data/caseStudies.js';
+
+export async function getStaticPaths() {
+  return caseStudies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study }
+  }));
+}
+
+const { study } = Astro.props;
+---
+
+<Layout title={`${study.name} Case Study - Kyros`} description={`Placeholder detail for the ${study.name} project.`}>
+  <Navigation />
+
+  <main class="case-study">
+    <section class="hero">
+      <div class="section-container">
+        <div class="hero-copy">
+          <span class="icon">{study.icon}</span>
+          <h1>{study.name}</h1>
+          <p class="sector">{study.sector}</p>
+          <p class="challenge">{study.challenge}</p>
+          <div class="metrics">
+            {study.metrics.map((metric) => (
+              <span class="metric">{metric}</span>
+            ))}
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <div class="services-card">
+            <h2>Services involved</h2>
+            <ul>
+              {study.services.map((service) => (
+                <li>{service}</li>
+              ))}
+            </ul>
+            <p class="note">Replace with exact offerings once confirmed.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="approach">
+      <div class="section-container">
+        <div class="grid">
+          <div>
+            <h2>How we approached it</h2>
+            <ol>
+              {study.approach.map((step) => (
+                <li>{step}</li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <h2>Outcomes</h2>
+            <ul>
+              {study.outcomes.map((outcome) => (
+                <li>{outcome}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="section-container">
+        <div class="quote-card">
+          <h2>Client perspective</h2>
+          <p class="quote">{study.testimonialPlaceholder}</p>
+          <p class="placeholder">Slot in verified testimonial, attribution, and headshot once available.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="section-container">
+        <div class="cta-card">
+          <div>
+            <h2>Want similar results?</h2>
+            <p>Tell us about your bottleneck and we will outline what a Kyros sprint or toolkit would look like for your team.</p>
+          </div>
+          <a class="cta-primary" href="/discovery">Start the conversation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    background: #ffffff;
+  }
+
+  .hero .section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .icon {
+    font-size: 3rem;
+    display: inline-flex;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sector {
+    color: #4b5563;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .challenge {
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .metric {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #ffffff;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .services-card {
+    background: var(--bg-light);
+    border-radius: 22px;
+    padding: 2rem;
+    box-shadow: 0 26px 65px rgba(3, 52, 99, 0.08);
+    display: grid;
+    gap: 1rem;
+  }
+
+  .services-card ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .services-card li {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .services-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  .services-card .note {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .approach {
+    background: #f5f7fb;
+  }
+
+  .approach .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  ol {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+
+  ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  .testimonial {
+    background: #ffffff;
+  }
+
+  .quote-card {
+    background: #0b1f33;
+    color: #dbeafe;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 36px 80px rgba(3, 52, 99, 0.2);
+  }
+
+  .quote-card h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .placeholder {
+    color: rgba(219, 234, 254, 0.8);
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    background: #f5f7fb;
+  }
+
+  .cta-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 24px 55px rgba(3, 52, 99, 0.12);
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(3, 52, 99, 0.18);
+  }
+
+  @media (max-width: 1200px) {
+    .hero .section-container,
+    .approach .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .quote-card,
+    .cta-card {
+      padding: 2.25rem;
+    }
+  }
+</style>
