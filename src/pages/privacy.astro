@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    title: '1. Overview',
+    body: 'Summarise the purpose of this policy, who Kyros is, and how you approach privacy. Replace this paragraph with your official stance once legal review is complete.'
+  },
+  {
+    title: '2. Data we collect (placeholder)',
+    body: 'List the categories of personal and business data gathered across website forms, product usage, demos, and customer support. Include lawful bases once defined.'
+  },
+  {
+    title: '3. How we use information',
+    body: 'Describe permissible uses: delivering services, analytics, communication, security, and compliance. Swap the placeholders with precise language for each use case.'
+  },
+  {
+    title: '4. Sharing and disclosure',
+    body: 'Outline if/when data is shared with vendors, partners, or authorities. Note that you will document subprocessors and contracts when ready.'
+  },
+  {
+    title: '5. Data retention',
+    body: 'Insert retention windows for different data types. Mention criteria used to determine retention and how deletion requests are handled.'
+  },
+  {
+    title: '6. Your rights',
+    body: 'Explain rights under applicable regulations (e.g. UK GDPR). Replace this placeholder with the definitive list and instructions for exercising them.'
+  },
+  {
+    title: '7. International transfers',
+    body: 'State whether data leaves the UK/EEA, what safeguards apply, and how to request more information. This is placeholder copy pending legal confirmation.'
+  },
+  {
+    title: '8. Security',
+    body: 'Summarise security practices at a high level—access controls, monitoring, incident response. Update with actual controls once documented.'
+  },
+  {
+    title: '9. Contact',
+    body: 'Provide the official contact method for privacy enquiries (e.g. dpo@kyros.com). Replace the placeholder email below once finalised.'
+  }
+];
+---
+
+<Layout title="Privacy Policy - Kyros" description="Placeholder privacy policy template for Kyros.">
+  <Navigation />
+
+  <main class="privacy">
+    <section class="hero">
+      <div class="section-container">
+        <h1>Privacy Policy</h1>
+        <p class="intro">This is a placeholder policy. Replace the guidance below with legally reviewed language before publishing. The structure follows common UK GDPR expectations.</p>
+        <p class="effective">Effective date: <span>To be confirmed</span></p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="section-container">
+        <div class="policy">
+          {sections.map((section) => (
+            <article class="policy-section">
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
+            </article>
+          ))}
+        </div>
+        <aside class="notes">
+          <div class="note-card">
+            <h3>Next steps</h3>
+            <ul>
+              <li>Confirm data inventory and subprocessors.</li>
+              <li>Insert lawful bases, retention periods, and DSR workflow.</li>
+              <li>Add cookie policy reference if applicable.</li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:privacy@kyros.com">privacy@kyros.com</a> (placeholder)</p>
+            <p>Address: Add registered office address once confirmed.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    background: #ffffff;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #1f2937;
+    max-width: 60ch;
+  }
+
+  .effective {
+    margin-top: 1rem;
+    color: #4b5563;
+  }
+
+  .effective span {
+    font-weight: 600;
+    color: #0d6efd;
+  }
+
+  .content {
+    background: #f5f7fb;
+  }
+
+  .content .section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .policy {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .policy-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 24px 60px rgba(3, 52, 99, 0.08);
+  }
+
+  .policy-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .notes {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .note-card,
+  .contact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 1.75rem;
+    box-shadow: 0 18px 45px rgba(3, 52, 99, 0.08);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.45rem;
+  }
+
+  li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  a {
+    color: #0d6efd;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1024px) {
+    .content .section-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .policy-section,
+    .note-card,
+    .contact-card {
+      padding: 1.75rem;
+    }
+  }
+</style>

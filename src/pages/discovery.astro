@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
 ---
 
 <Layout title="Take Control - kyros">
@@ -76,6 +77,18 @@ import Footer from '../components/Footer.astro';
                </div>
              </div>
            </div>
+
+          <div class="diagnostic-widget">
+            <div class="diagnostic-widget-copy">
+              <h2>Prefer to explore first?</h2>
+              <p>
+                Use our 5 Whys workflow explorer to sketch the bottleneck before the call.
+                You’ll leave with a mini plan and the automation plays we typically ship in
+                sprints.
+              </p>
+            </div>
+            <WorkflowDiscoveryTool client:idle />
+          </div>
            
            <!-- Testimonials Carousel -->
            <div class="testimonials-section">
@@ -235,6 +248,31 @@ import Footer from '../components/Footer.astro';
     margin: 0;
     line-height: 1.2;
     color: var(--text-dark);
+  }
+
+  .diagnostic-widget {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(3, 52, 99, 0.08);
+    box-shadow: 0 20px 45px rgba(3, 52, 99, 0.08);
+    margin: 2rem 0 3rem;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .diagnostic-widget-copy h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .diagnostic-widget-copy p {
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
   }
 
   .contact-content {
@@ -542,6 +580,14 @@ import Footer from '../components/Footer.astro';
 
     .header-content h1 {
       font-size: 2.5rem;
+    }
+
+    .diagnostic-widget {
+      padding: 1.4rem;
+    }
+
+    .diagnostic-widget-copy h2 {
+      font-size: 1.75rem;
     }
 
     .content-grid {
