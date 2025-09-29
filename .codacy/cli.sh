@@ -51,16 +51,25 @@ get_latest_version() {
     local curl_exit_code
     local version
 
-    # Construct curl command with robust options
-    local curl_cmd="curl --fail --silent --show-error --retry 3 --retry-delay 1 --max-time 30 -H 'Accept: application/vnd.github.v3+json'"
+get_latest_version() {
+    local response
+    local curl_exit_code
+    local version
+
+    # Build curl arguments in an array to avoid eval/injection risks
+    local curl_args=(
+        --fail --silent --show-error
+        --retry 3 --retry-delay 1 --max-time 30
+        -H 'Accept: application/vnd.github.v3+json'
+    )
 
     if [ -n "$GH_TOKEN" ]; then
-        curl_cmd="$curl_cmd --header 'Authorization: Bearer $GH_TOKEN'"
+        curl_args+=(--header "Authorization: Bearer $GH_TOKEN")
     fi
-    curl_cmd="$curl_cmd 'https://api.github.com/repos/codacy/codacy-cli-v2/releases/latest'"
+    curl_args+=('https://api.github.com/repos/codacy/codacy-cli-v2/releases/latest')
 
-    # Execute curl and capture both output and exit code
-    response=$(eval "$curl_cmd" 2>&1)
+    # Execute curl directly using the array
+    response=$(curl "${curl_args[@]}" 2>&1)
     curl_exit_code=$?
 
     if [ $curl_exit_code -ne 0 ]; then
@@ -68,6 +77,10 @@ get_latest_version() {
         echo "Response: $response" >&2
         exit 1
     fi
+
+    # parse 'response' to extract 'version' as before
+    # ...
+}
 
     handle_rate_limit "$response"
 
