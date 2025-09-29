@@ -136,24 +136,11 @@ download() {
     ( cd "$output_folder" && download_file "$url" )
 }
 
-download_cli() {
-    # OS name lower case
-    suffix=$(echo "$os_name" | tr '[:upper:]' '[:lower:]')
-
-    local bin_folder="$1"
-    local bin_path="$2"
-    local version="$3"
-
-    if [ ! -f "$bin_path" ]; then
-        echo "📥 Downloading CLI version $version..."
-
-        remote_file="codacy-cli-v2_${version}_${suffix}_${arch}.tar.gz"
-        url="https://github.com/codacy/codacy-cli-v2/releases/download/${version}/${remote_file}"
-
         download "$url" "$bin_folder"
-        tar xzfv "${bin_folder}/${remote_file}" -C "${bin_folder}"
-    fi
-}
+        if ! tar xzf "${bin_folder}/${remote_file}" -C "${bin_folder}"; then
+            echo "Error: Failed to extract ${remote_file}" >&2
+            exit 1
+        fi
 
 # Warn if CODACY_CLI_V2_VERSION is set and update is requested
 if [ -n "$CODACY_CLI_V2_VERSION" ] && [ "$1" = "update" ]; then
