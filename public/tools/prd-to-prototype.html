@@ -389,35 +389,37 @@
     </main>
 
     <script>
-      const fileInput = document.getElementById('fileInput');
-      const fileInfo = document.getElementById('fileInfo');
-      const calloutMessage = document.getElementById('calloutMessage');
-      const generateBtn = document.getElementById('generateBtn');
-      const uploadSection = document.getElementById('uploadSection');
-      const loadingEl = document.getElementById('loading');
-      const previewSection = document.getElementById('previewSection');
-      const errorEl = document.getElementById('error');
-      const prototypeFrame = document.getElementById('prototypeFrame');
+      document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const calloutMessage = document.getElementById('calloutMessage');
+        const generateBtn = document.getElementById('generateBtn');
+        const uploadSection = document.getElementById('uploadSection');
+        const loadingEl = document.getElementById('loading');
+        const previewSection = document.getElementById('previewSection');
+        const errorEl = document.getElementById('error');
+        const prototypeFrame = document.getElementById('prototypeFrame');
 
-      let uploadedFile = null;
-      let rawContent = '';
-      let generatedHTML = '';
+        let uploadedFile = null;
+        let rawContent = '';
+        let generatedHTML = '';
 
-      uploadSection.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadSection.classList.add('dragover');
-      });
+        uploadSection.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          uploadSection.classList.add('dragover');
+        });
 
-      uploadSection.addEventListener('dragleave', () => {
-        uploadSection.classList.remove('dragover');
-      });
+        uploadSection.addEventListener('dragleave', () => {
+          uploadSection.classList.remove('dragover');
+        });
 
-      uploadSection.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadSection.classList.remove('dragover');
-        if (e.dataTransfer.files.length) {
-          handleFile(e.dataTransfer.files[0]);
-        }
+        uploadSection.addEventListener('drop', (e) => {
+          e.preventDefault();
+          uploadSection.classList.remove('dragover');
+          if (e.dataTransfer.files.length) {
+            handleFile(e.dataTransfer.files[0]);
+          }
+        });
       });
 
       fileInput.addEventListener('change', (e) => {
