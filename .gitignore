@@ -27,3 +27,5 @@ pnpm-debug.log*
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+kyros-website.code-workspace
+.kilocode/mcp.json
