@@ -1,0 +1,159 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+import { subscriptionTools } from '../../../data/subscriptionTools.js';
+---
+
+<Layout title="Subscription Tools - Kyros" description="Placeholder catalogue of Kyros subscription automation toolkits.">
+  <Navigation />
+
+  <main class="subscriptions-page">
+    <section class="hero">
+      <div class="section-container">
+        <h1>Subscription toolkits</h1>
+        <p class="lead">Each toolkit keeps your automation and insights humming between larger sprint projects. Replace the placeholder blurbs, personas, and pricing notes when the catalogue is finalised.</p>
+      </div>
+    </section>
+
+    <section class="catalogue">
+      <div class="section-container">
+        <div class="tool-grid">
+          {subscriptionTools.map((tool) => (
+            <article class="tool-card">
+              <header>
+                <h2>{tool.name}</h2>
+                <p class="persona">For: {tool.persona}</p>
+              </header>
+              <p>{tool.headline}</p>
+              <p>{tool.summary}</p>
+              <div class="list-block">
+                <h3>Why teams ask for it</h3>
+                <ul>
+                  {tool.painPoints.map((pain) => (
+                    <li>{pain}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="list-block">
+                <h3>Core ingredients</h3>
+                <ul>
+                  {tool.features.map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="outcomes">
+                <h3>Expected outcomes</h3>
+                <ul>
+                  {tool.outcomes.map((outcome) => (
+                    <li>{outcome}</li>
+                  ))}
+                </ul>
+              </div>
+              <footer>
+                <p class="pricing-note">{tool.pricingNote}</p>
+                <a class="cta-link" href={`/services/subscriptions/${tool.slug}`}>View detailed template</a>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    background: #ffffff;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: #1f2937;
+    max-width: 60ch;
+  }
+
+  .catalogue {
+    background: #f5f7fb;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+  }
+
+  .tool-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 28px 70px rgba(3, 52, 99, 0.12);
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .persona {
+    font-size: 0.95rem;
+    color: #4b5563;
+  }
+
+  .list-block ul,
+  .outcomes ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .list-block li,
+  .outcomes li {
+    position: relative;
+    padding-left: 1.6rem;
+    color: #1f2937;
+  }
+
+  .list-block li::before,
+  .outcomes li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  .pricing-note {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .cta-link {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .cta-link:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .tool-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tool-card {
+      padding: 2rem;
+    }
+  }
+</style>

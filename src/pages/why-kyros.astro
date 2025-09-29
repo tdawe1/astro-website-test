@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const pillars = [
+  {
+    title: 'Operator-first automation',
+    description: 'We design with the people running the business in mind. Every workflow keeps humans in the loop and makes their call the default, not an override.'
+  },
+  {
+    title: 'Measured bets, accountable ROI',
+    description: 'We never automate for the sake of a shiny demo. Engagements start with targets, baselines, and leading indicators so progress is obvious.'
+  },
+  {
+    title: 'Delivery that sticks',
+    description: 'Enablement, documentation, and change support are baked into the sprint. Teams leave with confidence to maintain and extend the solution.'
+  }
+];
+
+const proofPoints = [
+  {
+    label: 'Average time-to-impact',
+    value: '6 weeks'
+  },
+  {
+    label: 'Repeat engagement rate',
+    value: '82%'
+  },
+  {
+    label: 'Automation adoption',
+    value: '95% of delivered workflows still live after 6 months'
+  }
+];
+
+const storyMilestones = [
+  {
+    heading: 'The thesis',
+    body: 'Kyros started as an internal tooling lab helping founders triage the 20% of operations that throttled their growth. The playbook became a company when we realised the same patterns repeated across sectors.'
+  },
+  {
+    heading: 'Where we operate today',
+    body: 'Manufacturing, services, and distribution teams call us when quoting delays, manual QA, or reporting drags their P&L. The through line: high-context work that deserves better than a generic SaaS add-on.'
+  },
+  {
+    heading: 'What stays non-negotiable',
+    body: 'We run lean, embed with teams, and leave them better than we found them. That means transparent pricing, explicit handover, and tools that can be iterated without phoning an agency.'
+  }
+];
+---
+
+<Layout title="Why Kyros?" description="Placeholder story, proof, and values overview for Kyros.">
+  <Navigation />
+
+  <main class="why-kyros">
+    <section class="hero">
+      <div class="section-container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Why Kyros?</h1>
+            <p class="intro">
+              This is the space to tell the founding story, the mission, and the reason our approach to automation delivers compounding results. Swap in narrative, data, and quotes once research is finalised.
+            </p>
+            <div class="hero-pillars">
+              {pillars.map((pillar) => (
+                <div class="pillar">
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <aside class="hero-side">
+            <div class="placeholder-card">
+              <span class="tag">Insert video / image placeholder</span>
+              <p>
+                Reserve this space for a founder portrait, team photo, or short video once assets are ready.
+              </p>
+            </div>
+            <div class="proof-grid">
+              {proofPoints.map((item) => (
+                <div class="proof-item">
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="story section-container">
+      <div class="story-header">
+        <h2>Our story (placeholder)</h2>
+        <p>
+          Use these cards to describe the journey so far—how the idea formed, the inflection points, and what keeps us focused. Each block is ready for 2-3 sentences of copy.
+        </p>
+      </div>
+      <div class="story-grid">
+        {storyMilestones.map((milestone) => (
+          <article class="story-card">
+            <h3>{milestone.heading}</h3>
+            <p>{milestone.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="section-container">
+        <header class="values-header">
+          <h2>How we work</h2>
+          <p>
+            Swap these placeholders with positioning statements, client principles, or value pillars once tone and messaging are final. Keep the structure: headline, supporting line, optional proof.
+          </p>
+        </header>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Co-design over hand-offs</h3>
+            <p>
+              Engagements are structured with co-creation workshops, playbacks, and async reviews. Replace this text with real rituals or artefacts you want to highlight.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Small teams, senior talent</h3>
+            <p>
+              Kyros stays lean so founders and principals stay on the work. Use this slot to talk about experience, certifications, or unique frameworks.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Momentum by design</h3>
+            <p>
+              Sprint format keeps decisions tight, shipping weekly, and adoption front-of-mind. Replace with your own language around cadence and accountability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="section-container">
+        <div class="cta-card">
+          <div>
+            <h2>Ready to add the real copy?</h2>
+            <p>
+              Capture messaging, customer quotes, or press mentions here. In the meantime this block acts as the CTA to move visitors into discovery or the main services page.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a class="cta-primary" href="/services">Explore services</a>
+            <a class="cta-secondary" href="/discovery">Book a call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .why-kyros {
+    background: #ffffff;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 86, 179, 0.12));
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    max-width: 50ch;
+  }
+
+  .hero-pillars {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .pillar {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 20px 45px rgba(3, 52, 99, 0.08);
+  }
+
+  .pillar h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-side {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .placeholder-card {
+    background: #0b1f33;
+    color: #dbeafe;
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: grid;
+    gap: 0.75rem;
+    min-height: 240px;
+  }
+
+  .placeholder-card .tag {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(219, 234, 254, 0.65);
+  }
+
+  .proof-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .proof-item {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(3, 52, 99, 0.08);
+  }
+
+  .proof-item strong {
+    display: block;
+    font-size: 1.4rem;
+    color: #033463;
+  }
+
+  .proof-item span {
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  .story {
+    background: #ffffff;
+  }
+
+  .story-header {
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .story-card {
+    border-radius: 18px;
+    background: var(--bg-light);
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 220px;
+  }
+
+  .values {
+    background: #f5f7fb;
+  }
+
+  .values-header {
+    max-width: 55ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .value-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(3, 52, 99, 0.08);
+  }
+
+  .cta {
+    background: #ffffff;
+  }
+
+  .cta-card {
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: white;
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .cta-card p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 55ch;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .cta-primary {
+    background: white;
+    color: #033463;
+  }
+
+  .cta-secondary {
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    color: white;
+  }
+
+  @media (max-width: 1080px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .story-grid,
+    .values-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-container {
+      padding: 90px 0;
+    }
+
+    .story-grid,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+      padding: 2.25rem;
+    }
+  }
+</style>

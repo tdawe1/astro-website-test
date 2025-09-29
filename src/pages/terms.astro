@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const clauses = [
+  {
+    title: '1. Agreement overview',
+    body: 'Provide a concise summary of the agreement between Kyros and the customer. Replace this placeholder with legally reviewed text before publishing.'
+  },
+  {
+    title: '2. Services provided',
+    body: 'Describe the scope of services (Agile Sprint, subscriptions, advisory). Add detail around deliverables, timelines, and exclusions once confirmed.'
+  },
+  {
+    title: '3. Client responsibilities',
+    body: 'Outline expectations for access, stakeholders, approvals, and provision of data. Update with definitive obligations after policy review.'
+  },
+  {
+    title: '4. Fees and payment',
+    body: 'Insert billing terms, invoicing cadence, late payment clauses, and refund policies when commercial terms are final.'
+  },
+  {
+    title: '5. Intellectual property',
+    body: 'Clarify who owns deliverables, pre-existing IP, and licenses granted. Replace placeholder text once legal language is ready.'
+  },
+  {
+    title: '6. Confidentiality',
+    body: 'Describe confidentiality obligations for both parties, including permitted disclosures and duration. Add real clauses later.'
+  },
+  {
+    title: '7. Data protection',
+    body: 'Reference the privacy policy, data processing addendums, and security commitments. Update with actual commitments once set.'
+  },
+  {
+    title: '8. Warranties and disclaimers',
+    body: 'Insert warranty language, service levels, and disclaimers as advised by counsel. This placeholder signals the section structure.'
+  },
+  {
+    title: '9. Liability',
+    body: 'Document liability caps, exclusions, and indemnities. Replace with approved legal wording before go-live.'
+  },
+  {
+    title: '10. Termination',
+    body: 'Explain how either party can terminate, notice periods, and consequences. Fill in once agreements are final.'
+  },
+  {
+    title: '11. Governing law',
+    body: 'Specify the governing law and jurisdiction (e.g. England and Wales). Update alongside legal review.'
+  }
+];
+---
+
+<Layout title="Terms of Service - Kyros" description="Placeholder terms of service template for Kyros.">
+  <Navigation />
+
+  <main class="terms">
+    <section class="hero">
+      <div class="section-container">
+        <h1>Terms of Service</h1>
+        <p class="intro">This page is a structural placeholder for Kyros’ Terms of Service. Replace all copy with legally reviewed language before sharing with clients.</p>
+        <p class="effective">Effective date: <span>To be confirmed</span></p>
+      </div>
+    </section>
+
+    <section class="clauses">
+      <div class="section-container">
+        <div class="clause-list">
+          {clauses.map((clause) => (
+            <article class="clause">
+              <h2>{clause.title}</h2>
+              <p>{clause.body}</p>
+            </article>
+          ))}
+        </div>
+        <aside class="sidebar">
+          <div class="note-card">
+            <h3>Drafting checklist</h3>
+            <ul>
+              <li>Confirm commercial model and incorporate deadlines.</li>
+              <li>Decide on liabilities, warranties, and SLAs.</li>
+              <li>Link to privacy policy and any DPA once final.</li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <h3>Questions?</h3>
+            <p>Email: <a href="mailto:legal@kyros.com">legal@kyros.com</a> (placeholder)</p>
+            <p>Address: add registered company address.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    background: #ffffff;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #1f2937;
+    max-width: 60ch;
+  }
+
+  .effective {
+    margin-top: 1rem;
+    color: #4b5563;
+  }
+
+  .effective span {
+    font-weight: 600;
+    color: #0d6efd;
+  }
+
+  .clauses {
+    background: #f5f7fb;
+  }
+
+  .clauses .section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .clause-list {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .clause {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 24px 60px rgba(3, 52, 99, 0.08);
+  }
+
+  .clause h2 {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .note-card,
+  .contact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 1.75rem;
+    box-shadow: 0 18px 45px rgba(3, 52, 99, 0.08);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.45rem;
+  }
+
+  li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+  }
+
+  a {
+    color: #0d6efd;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1024px) {
+    .clauses .section-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clause,
+    .note-card,
+    .contact-card {
+      padding: 1.75rem;
+    }
+  }
+</style>

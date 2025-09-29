@@ -1,313 +1,203 @@
 ---
-// Header component for the website
+import Navigation from './Navigation.astro';
 ---
 
-<header>
-  <nav>
-    <div class="logo">
-      <img src="/logo.png" alt="kyros - Automation without the bloat" class="logo-image">
-    </div>
-    <ul class="nav-links">
-      <li><a href="#process">Our Process</a></li>
-      <li><a href="#case-studies">Case Studies</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="/demo" class="nav-demo">Demo</a></li>
-      <li><a href="/portal" class="nav-login">Log In</a></li>
-      <li><a href="/discovery" class="nav-cta">Book A Call</a></li>
-    </ul>
-  </nav>
-  
-  <div class="section-container">
+<header class="home-hero">
+  <Navigation />
+
+  <div class="section-container hero-shell">
     <div class="hero-grid">
       <div class="hero-content">
-        <h2>Automation without the bloat. ROI without the gamble.</h2>
+        <h1>Automation without the bloat. ROI without the gamble.</h1>
+        <p>
+          Kyros plugs into the way your team already works—mapping bottlenecks, shipping
+          bespoke automations, and leaving you with the documentation to stay in control.
+        </p>
+        <div class="hero-cta">
+          <a class="cta-primary" href="/discovery">Book a discovery sprint</a>
+          <a class="cta-secondary" href="/case-studies">See how teams use Kyros</a>
+        </div>
       </div>
-              <div class="hero-visual">
-          <div class="hero-images-container">
-            <div class="hero-image-container left-angled">
-              <img src="/workflow-dashboard.png?v=2" alt="kyros workflow dashboard" class="hero-image-3d">
-            </div>
-            <div class="hero-image-container right-angled">
-              <img src="/reporting-hub.png?v=2" alt="kyros reporting hub" class="hero-image-3d">
-            </div>
-            <div class="center-background-dim"></div>
-            <div class="hero-image-container center-overlay">
-              <img src="/centre-img.png?v=2" alt="kyros center overlay" class="hero-image-3d">
-            </div>
+
+      <div class="hero-visual">
+        <div class="hero-images">
+          <div class="hero-image left-angled">
+            <img src="/workflow-dashboard.png?v=2" alt="Workflow dashboard" />
+          </div>
+          <div class="hero-image right-angled">
+            <img src="/reporting-hub.png?v=2" alt="Reporting hub" />
+          </div>
+          <div class="hero-image center-overlay">
+            <img src="/centre-img.png?v=2" alt="Automation highlights" />
           </div>
         </div>
+      </div>
     </div>
   </div>
 </header>
 
 <style>
-  header {
-          min-height: 70vh;
+  .home-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-    padding: 0;
-    background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%);
+    gap: 0;
   }
 
-  nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 3.15rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 10;
+  .hero-shell {
+    padding: 4.5rem 0 4rem;
   }
 
-  .logo {
-    display: flex;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
     align-items: center;
   }
 
-  .logo-image {
-    height: 180px;
-    width: auto;
-    max-width: 400px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-
-  .logo-image:hover {
-    transform: scale(1.05);
-  }
-
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: #033463 !important;
-    font-weight: 500;
-    font-size: 1.3rem;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0;
-  }
-
-  .nav-demo {
-    color: var(--accent-blue) !important;
-    padding: 0.75rem 1.5rem !important;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-
-  .nav-demo:hover {
-    color: var(--electric-blue-dark) !important;
-    transform: translateY(-2px);
-  }
-
-  header .nav-login {
-    color: var(--accent-blue) !important;
-    border: 2px solid var(--accent-blue);
-    padding: 0.75rem 1.5rem !important;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-
-  header .nav-login:hover {
-    background: var(--accent-blue);
-    color: #FFFFFF !important;
-    transform: translateY(-2px);
-  }
-
-  .nav-links a:hover {
-    color: var(--accent-blue);
-    transform: translateY(-2.1px); /* 5% larger: -2px to -2.1px */
-  }
-
-  header .nav-cta {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
-    color: #FFFFFF !important;
-    padding: 0.7875rem 1.575rem !important; /* 5% larger: 0.75rem 1.5rem to 0.7875rem 1.575rem */
-    border-radius: 8.4px; /* 5% larger: 8px to 8.4px */
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
     font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 4.2px 15.75px rgba(0, 123, 255, 0.3); /* 5% larger shadows */
-    transition: all 0.3s ease;
-  }
-
-  header .nav-cta:hover {
-    transform: translateY(-3.15px) !important; /* 5% larger: -3px to -3.15px */
-    box-shadow: 0 6.3px 21px rgba(0, 123, 255, 0.4); /* 5% larger shadows */
-    color: #FFFFFF !important;
-  }
-
-      .hero-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 1rem;
-      align-items: center;
-      width: 100%;
-      margin-top: 120px;
-    }
-
-  .hero-content {
-    max-width: 630px; /* 5% larger: 600px to 630px */
     color: #033463;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
   }
 
-  .hero-content h2 {
-    font-size: 4.2rem; /* 5% larger: 4rem to 4.2rem */
-    font-weight: 700;
-    color: #033463 !important;
-    margin: 0;
-    line-height: 1.2;
-    text-align: left;
+  .hero-content p {
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    max-width: 520px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 0.75rem 1.6rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-primary {
+    background: linear-gradient(120deg, var(--accent-blue), var(--electric-blue-dark));
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(13, 110, 253, 0.2);
+  }
+
+  .cta-secondary {
+    border: 1px solid rgba(3, 52, 99, 0.2);
+    color: #033463;
+    background: rgba(3, 52, 99, 0.04);
+  }
+
+  .cta-primary:hover,
+  .cta-secondary:hover {
+    transform: translateY(-2px);
   }
 
   .hero-visual {
     display: flex;
-    align-items: center;
     justify-content: center;
   }
 
-      .hero-images-container {
-      display: flex;
-      gap: 5rem;
-      align-items: center;
-      justify-content: center;
-      perspective: 1200px;
-    }
-
-  .hero-image-container {
+  .hero-images {
     position: relative;
-    width: 520px;
-    height: 700px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
   }
 
-  .right-angled {
-    width: 520px;
-    height: 520px;
+  .hero-image {
+    width: clamp(180px, 32vw, 260px);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(3, 52, 99, 0.2);
+    background: #ffffff;
   }
 
-  .center-background-dim {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 600px;
-    z-index: 15;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    backdrop-filter: blur(2px);
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
-  .center-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 600px;
-    z-index: 20;
-    padding: 30px 20px 20px 20px;
+  .hero-image.left-angled {
+    transform: perspective(900px) rotateY(14deg) rotateX(4deg);
+    opacity: 0.9;
   }
 
-  .left-angled {
-    transform: perspective(1200px) rotateY(18deg) rotateX(6deg);
-    opacity: 0.6;
+  .hero-image.right-angled {
+    transform: perspective(900px) rotateY(-14deg) rotateX(-4deg);
+    opacity: 0.9;
   }
 
-  .right-angled {
-    transform: perspective(1200px) rotateY(-18deg) rotateX(-6deg);
-    opacity: 0.6;
+  .hero-image.center-overlay {
+    grid-column: 1 / -1;
+    width: clamp(220px, 38vw, 320px);
+    margin-top: -2.5rem;
+    transform: translateZ(0);
+    box-shadow: 0 24px 60px rgba(3, 52, 99, 0.25);
   }
 
-
-
-      .hero-image-3d {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-
-
-  @media (max-width: 768px) {
-    header {
-      min-height: 100vh;
-      padding: 1.05rem; /* 5% larger: 1rem to 1.05rem */
-    }
-
-    nav {
-      padding: 1.05rem; /* 5% larger: 1rem to 1.05rem */
-      flex-direction: column;
-      gap: 1.05rem; /* 5% larger: 1rem to 1.05rem */
-    }
-
-    .logo-image {
-      height: 120px;
-    }
-
-    .nav-links {
-      gap: 1.05rem; /* 5% larger: 1rem to 1.05rem */
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
+  @media (max-width: 1024px) {
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: 2.1rem; /* 5% larger: 2rem to 2.1rem */
+      text-align: center;
+      gap: 2.5rem;
     }
 
-    .hero-content h2 {
-      font-size: 3.15rem; /* 5% larger: 3rem to 3.15rem */
-      margin-bottom: 1.05rem; /* 5% larger: 1rem to 1.05rem */
+    .hero-content p {
+      margin-inline: auto;
     }
 
-    .hero-visual {
-      height: auto;
-      order: -1;
+    .hero-cta {
+      justify-content: center;
     }
 
-    .hero-images-container {
-      flex-direction: column;
+    .hero-images {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
 
-    .left-angled,
-    .right-angled {
-      transform: perspective(800px) rotateY(0deg) rotateX(0deg);
+    .hero-image.left-angled,
+    .hero-image.right-angled {
+      transform: none;
     }
 
-    .hero-image-container {
-      width: 480px;
-      height: 650px;
+    .hero-image.center-overlay {
+      margin-top: -1rem;
+      width: clamp(220px, 60vw, 340px);
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero-shell {
+      padding: 3.5rem 0 3rem;
     }
 
-    .center-background-dim {
-      width: 400px;
-      height: 550px;
+    .hero-images {
+      grid-template-columns: 1fr;
     }
 
-    .center-overlay {
-      width: 400px;
-      height: 550px;
+    .hero-image {
+      width: min(85vw, 320px);
     }
 
-    .right-angled {
-      width: 480px;
-      height: 480px;
+    .hero-image.center-overlay {
+      margin-top: 0;
     }
   }
 </style>

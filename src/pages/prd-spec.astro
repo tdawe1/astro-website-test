@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="PRD Spec Template - Kyros" description="Placeholder for Kyros' Product Requirements Discovery template." >
+  <Navigation />
+
+  <main class="prd-spec">
+    <section class="hero">
+      <div class="section-container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Product requirements playbook</p>
+            <h1>Map the problem before you automate</h1>
+            <p class="lead">
+              This page will house our full PRD template—the framework we use with clients to turn loose ideas into scoped automation projects. Swap the copy with the finished artefact once it’s ready.
+            </p>
+            <ul>
+              <li>Problem framing, success metrics, and constraints.</li>
+              <li>Stakeholder matrix, systems inventory, and data quality checks.</li>
+              <li>Acceptance criteria, rollout plan, and measurement cadence.</li>
+            </ul>
+            <a class="cta" href="/discovery">Book a discovery sprint</a>
+          </div>
+          <div class="hero-card">
+            <h2>Coming soon</h2>
+            <p>
+              We’re packaging the exact worksheets we use when scoping sprint work: inputs, workshop agendas, and example outputs. Drop your email during the discovery call if you’d like early access.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outline">
+      <div class="section-container">
+        <h2>Draft outline</h2>
+        <div class="outline-grid">
+          <article>
+            <h3>1. Context and ambition</h3>
+            <p>
+              Define the business backdrop, the problem statements, and the metrics we’ll move. Replace this with the final narrative blocks.
+            </p>
+          </article>
+          <article>
+            <h3>2. Process walkthrough</h3>
+            <p>
+              Document the current workflow, pain points, systems, and manual decisions. This is where screenshots, swimlanes, and data lineage will sit.
+            </p>
+          </article>
+          <article>
+            <h3>3. Solution concepts</h3>
+            <p>
+              Capture candidate automations, guardrails, and handover plans. Use this section to align engineering, ops, and leadership on scope.
+            </p>
+          </article>
+          <article>
+            <h3>4. Delivery plan</h3>
+            <p>
+              Lay out sprint phases, owners, risks, and success measurement. Include your readiness checklist and change-management steps here.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="section-container">
+        <div class="cta-content">
+          <h2>Want the finished template?</h2>
+          <p>
+            We’ll email the polished PRD pack as soon as it’s ready. In the meantime, we can walk you through the structure on a call and tailor it to your workflow.
+          </p>
+          <a class="cta" href="/discovery">Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool-embed">
+      <div class="section-container">
+        <div class="tool-embed-card">
+          <div class="tool-embed-copy">
+            <h2>PRD to prototype, Kyros style</h2>
+            <p>
+              Drop in your draft PRD and we’ll reformat it into a clickable walkthrough with Kyros
+              branding. It’s the same framing we use before kicking off a sprint.
+            </p>
+          </div>
+          <div class="tool-embed-frame">
+            <iframe
+              src="/tools/prd-to-prototype.html"
+              title="Kyros PRD Explorer"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .prd-spec {
+    background: var(--bg-light);
+  }
+
+  .hero {
+    background: white;
+    padding-bottom: 3rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: #2563eb;
+    margin-bottom: 1rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-copy ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .hero-copy ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: #1f2937;
+  }
+
+  .hero-copy ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(3, 52, 99, 0.18);
+  }
+
+  .hero-card {
+    background: var(--bg-light);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 24px 60px rgba(3, 52, 99, 0.08);
+  }
+
+  .hero-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+
+  .hero-card p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .outline {
+    padding: 3rem 0;
+  }
+
+  .outline h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .outline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .outline-grid article {
+    background: white;
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 18px 45px rgba(3, 52, 99, 0.08);
+    border: 1px solid rgba(3, 52, 99, 0.08);
+  }
+
+  .outline-grid h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .outline-grid p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .cta-strip {
+    background: linear-gradient(120deg, #033463, #0d6efd);
+    color: white;
+    padding: 3rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  .cta-content p {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .cta-content .cta {
+    justify-self: center;
+    background: white;
+    color: #0d6efd;
+  }
+
+  .tool-embed {
+    background: var(--bg-light);
+    padding: 3rem 0 4rem;
+  }
+
+  .tool-embed-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 2.5rem;
+    box-shadow: 0 26px 65px rgba(3, 52, 99, 0.1);
+    border: 1px solid rgba(3, 52, 99, 0.1);
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .tool-embed-copy h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .tool-embed-copy p {
+    color: #475569;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .tool-embed-frame iframe {
+    width: 100%;
+    min-height: 650px;
+    border: none;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px rgba(3, 52, 99, 0.12);
+    background: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .outline-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tool-embed-card {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
+
+    .tool-embed-frame iframe {
+      min-height: 520px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-bottom: 2rem;
+    }
+
+    .hero-copy h1 {
+      font-size: 2.4rem;
+    }
+
+    .tool-embed {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .tool-embed-card {
+      padding: 1.5rem;
+    }
+
+    .tool-embed-copy h2 {
+      font-size: 1.7rem;
+    }
+
+    .tool-embed-frame iframe {
+      min-height: 480px;
+    }
+
+    .outline h2 {
+      text-align: center;
+    }
+  }
+</style>
