@@ -662,7 +662,9 @@ const WorkflowDiscoveryTool: React.FC = () => {
                   <button
                     key={example}
                     type="button"
-                    onClick={() => setProblem(example)}
+                    onClick={() => {
+                      setProblem(example);
+                    }}
                   >
                     {example}
                   </button>
@@ -721,7 +723,9 @@ const WorkflowDiscoveryTool: React.FC = () => {
                           setWhys(updated);
                         }}
                         onKeyPress={(e) =>
-                          handleKeyPress(e, () => handleWhySubmit(num - 1))
+                          handleKeyPress(e, () => {
+                            handleWhySubmit(num - 1);
+                          })
                         }
                       />
                       <button

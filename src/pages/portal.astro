@@ -1,6 +1,6 @@
 ---
 // Login page for kyros portal
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="kyros.Fuse">
@@ -8,37 +8,37 @@ import Layout from '../layouts/Layout.astro';
     <div class="login-container">
       <div class="login-content">
         <div class="login-header">
-          <img src="/logo.png" alt="kyros" class="login-logo">
+          <img src="/logo.png" alt="kyros" class="login-logo" />
         </div>
 
         <form class="login-form" id="loginForm">
           <div class="form-group">
             <label for="email">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              required 
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
               placeholder="Enter your email"
               class="form-input"
-            >
+            />
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password" 
-              required 
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
               placeholder="Enter your password"
               class="form-input"
-            >
+            />
           </div>
 
           <div class="form-options">
             <label class="checkbox-container">
-              <input type="checkbox" id="remember" name="remember">
+              <input type="checkbox" id="remember" name="remember" />
               Remember me
             </label>
             <a href="#" class="forgot-password">Forgot password?</a>
@@ -46,10 +46,10 @@ import Layout from '../layouts/Layout.astro';
 
           <button type="submit" class="login-button">
             <span class="button-text">Sign In</span>
-            <span class="button-loading" style="display: none;">Signing in...</span>
+            <span class="button-loading" style="display: none;"
+              >Signing in...</span
+            >
           </button>
-
-
 
           <button type="button" class="demo-button">
             Request Demo Access
@@ -57,7 +57,9 @@ import Layout from '../layouts/Layout.astro';
         </form>
 
         <div class="login-footer">
-          <p style="text-align: center;"><a href="/discovery" class="signup-link">Support</a></p>
+          <p style="text-align: center;">
+            <a href="/discovery" class="signup-link">Support</a>
+          </p>
         </div>
       </div>
     </div>
@@ -65,43 +67,50 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    const loginForm = document.getElementById('loginForm') as HTMLFormElement;
-    const loginButton = document.getElementById('loginButton') as HTMLButtonElement;
-    const buttonText = document.querySelector('.button-text') as HTMLElement;
-    const buttonLoading = document.querySelector('.button-loading') as HTMLElement;
-    const demoButton = document.querySelector('.demo-button') as HTMLButtonElement;
+  document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("password");
+    const loginForm = document.getElementById("loginForm");
+    const loginButton = document.querySelector(".login-button");
+    const buttonText = document.querySelector(".button-text");
+    const buttonLoading = document.querySelector(".button-loading");
+    const demoButton = document.querySelector(".demo-button");
 
-    if (!passwordInput || !loginForm || !loginButton || !buttonText || !buttonLoading || !demoButton) {
-      console.error('Some elements not found');
+    if (
+      !passwordInput ||
+      !loginForm ||
+      !loginButton ||
+      !buttonText ||
+      !buttonLoading ||
+      !demoButton
+    ) {
+      console.error("Some elements not found");
       return;
     }
 
     // Form submission
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      
+
       // Show loading state
-      buttonText.style.display = 'none';
-      buttonLoading.style.display = 'inline';
+      buttonText.style.display = "none";
+      buttonLoading.style.display = "inline";
       loginButton.disabled = true;
 
       // Simulate login process
       setTimeout(() => {
         // For now, just show an alert
-        alert('Login functionality coming soon! This is a demo page.');
-        
+        alert("Login functionality coming soon! This is a demo page.");
+
         // Reset button state
-        buttonText.style.display = 'inline';
-        buttonLoading.style.display = 'none';
+        buttonText.style.display = "inline";
+        buttonLoading.style.display = "none";
         loginButton.disabled = false;
       }, 2000);
     });
 
     // Demo access button
-    demoButton.addEventListener('click', function() {
-      window.location.href = '/demo';
+    demoButton.addEventListener("click", function () {
+      window.location.href = "/demo";
     });
   });
 </script>
@@ -112,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     padding: 2rem 1rem;
   }
 
@@ -185,8 +194,6 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
-
-
   .form-options {
     display: flex;
     justify-content: space-between;
@@ -219,7 +226,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .login-button {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue-dark) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--accent-blue) 0%,
+      var(--electric-blue-dark) 100%
+    );
     color: white;
     border: none;
     padding: 1rem;
@@ -240,9 +251,6 @@ import Layout from '../layouts/Layout.astro';
     opacity: 0.7;
     cursor: not-allowed;
   }
-
-
-
 
   .demo-button {
     background: white;
