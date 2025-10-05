@@ -35,7 +35,7 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/thomas/"
+        "${MCP_FILESYSTEM_ROOT:-.}"
       ]
     },
     "sequentialthinking": {
