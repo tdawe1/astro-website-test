@@ -1,4 +1,4 @@
-// Placeholder data for subscription service tools. Update with real offerings and copy.
+// TODO: Replace placeholder data with real subscription service offerings before production. See issue #1234.
 export const subscriptionTools = [
   {
     slug: 'automation-signal-pack',
