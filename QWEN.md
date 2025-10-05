@@ -5,6 +5,7 @@
 This is a website for kyros, a UK-based automation agency that builds automation and workflow optimization tools. The site is built with Astro as a static site generator with some dynamic functionality through API endpoints.
 
 **Key Features:**
+
 - Responsive design optimized for all screen sizes
 - Performance-focused with Astro's "zero JavaScript by default" approach
 - SEO optimized with semantic HTML and proper meta tags
@@ -30,6 +31,8 @@ src/
 │   ├── Process.astro   # 3-step methodology
 │   ├── CaseStudies.astro # Success stories
 │   ├── Industries.astro # Industry focus areas
+│   ├── Testimonials.astro # Client testimonials
+│   ├── FinalCTA.astro    # Final call-to-action section
 │   └── Footer.astro    # Site footer
 ├── layouts/            # Page layouts
 │   └── Layout.astro   # Main HTML boilerplate
@@ -67,6 +70,7 @@ The site uses SQLite for storing contact form submissions through a simple datab
 ## API Endpoints
 
 The site includes API endpoints for handling form submissions:
+
 - `/api/contact` - Handles contact form submissions with validation and database storage
 
 ## Contact Forms
@@ -78,6 +82,7 @@ There are two different contact forms in the project:
 2. **Dashboard Page Form** (`/dashboard`): Uses the local API endpoint (`/api/contact`) which connects to the SQLite database. This form stores submissions in the local `data/contacts.db` database.
 
 The local database functionality is implemented in `src/lib/database.js` and provides:
+
 - Contact form submission storage
 - Contact retrieval and management
 - Status tracking for leads
@@ -85,16 +90,19 @@ The local database functionality is implemented in `src/lib/database.js` and pro
 ## Building and Running
 
 **Development:**
+
 ```bash
 npm run dev
 ```
 
 **Building for Production:**
+
 ```bash
 npm run build
 ```
 
 **Preview Production Build:**
+
 ```bash
 npm run preview
 ```
@@ -110,7 +118,7 @@ Contact form submissions can be stored in a SQLite database (`data/contacts.db`)
 ## Responsive Design
 
 - Mobile: < 768px
-- Tablet: 768px - 1920px  
+- Tablet: 768px - 1920px
 - Desktop: > 1920px
 
 The site is optimized for 4K displays with enhanced spacing and sizing.
@@ -118,6 +126,7 @@ The site is optimized for 4K displays with enhanced spacing and sizing.
 ## Assets
 
 All images and assets are stored in the `public/` directory, including:
+
 - Logo variations
 - Hero images with 3D effects
 - Industry-specific visuals
