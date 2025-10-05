@@ -11,8 +11,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-/home/thomas/bridge-and-signal-website/logs
-/home/thomas/bridge-and-signal-website/logs/*
+logs/
 
 # environment variables
 .env
@@ -24,9 +23,10 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-
 #Ignore vscode AI rules
-.github/instructions/codacy.instructions.md
 kyros-website.code-workspace
 .kilocode/mcp.json
 src/pages/services/index.astro
+docs/FORMSPREE_SETUP.md
+QWEN.md
+QWEN.md

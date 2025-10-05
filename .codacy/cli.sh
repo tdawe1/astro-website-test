@@ -51,16 +51,12 @@ get_latest_version() {
     local curl_exit_code
     local version
 
-    # Construct curl command with robust options
-    local curl_cmd="curl --fail --silent --show-error --retry 3 --retry-delay 1 --max-time 30 -H 'Accept: application/vnd.github.v3+json'"
-
+    # Execute curl directly and capture both output and exit code
     if [ -n "$GH_TOKEN" ]; then
-        curl_cmd="$curl_cmd --header 'Authorization: Bearer $GH_TOKEN'"
+        response=$(curl --fail --silent --show-error --retry 3 --retry-delay 1 --max-time 30 -H 'Accept: application/vnd.github.v3+json' --header "Authorization: token $GH_TOKEN" 'https://api.github.com/repos/codacy/codacy-cli-v2/releases/latest' 2>&1)
+    else
+        response=$(curl --fail --silent --show-error --retry 3 --retry-delay 1 --max-time 30 -H 'Accept: application/vnd.github.v3+json' 'https://api.github.com/repos/codacy/codacy-cli-v2/releases/latest' 2>&1)
     fi
-    curl_cmd="$curl_cmd 'https://api.github.com/repos/codacy/codacy-cli-v2/releases/latest'"
-
-    # Execute curl and capture both output and exit code
-    response=$(eval "$curl_cmd" 2>&1)
     curl_exit_code=$?
 
     if [ $curl_exit_code -ne 0 ]; then
@@ -100,9 +96,13 @@ handle_rate_limit() {
     local response="$1"
     if echo "$response" | grep -q "API rate limit exceeded"; then
           fatal "Error: GitHub API rate limit exceeded. Please try again later"
+handle_rate_limit() {
+    local response="$1"
+    if echo "$response" | grep -q "API rate limit exceeded"; then
+          echo "Error: GitHub API rate limit exceeded. Please try again later" >&2
+          exit 1
     fi
 }
-
 download_file() {
     local url="$1"
 
@@ -112,12 +112,10 @@ download_file() {
     elif command -v wget > /dev/null 2>&1; then
         wget "$url"
     else
-        fatal "Error: Could not find curl or wget, please install one."
+        echo "Error: Could not find curl or wget, please install one." >&2
+        exit 1
     fi
 }
-
-download() {
-    local url="$1"
     local output_folder="$2"
 
     ( cd "$output_folder" && download_file "$url" )
@@ -176,10 +174,7 @@ chmod +x "$bin_path"
 
 run_command="$bin_path"
 if [ -z "$run_command" ]; then
-    fatal "Codacy cli v2 binary could not be found."
-fi
-
-if [ "$#" -eq 1 ] && [ "$1" = "download" ]; then
+run_command="$bin_path"
     echo "Codacy cli v2 download succeeded"
 else
     eval "$run_command $*"
