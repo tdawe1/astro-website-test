@@ -437,16 +437,16 @@ try {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('.contact-form') as HTMLFormElement;
+  const form = document.querySelector('.contact-form');
   if (!form) return;
-  
-  const messageDiv = document.getElementById('form-message') as HTMLDivElement;
+
+  const messageDiv = document.getElementById('form-message');
   if (!messageDiv) return;
-  
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+
+    const submitBtn = form.querySelector('.submit-btn');
     if (!submitBtn) return;
     
     const originalText = submitBtn.innerHTML;

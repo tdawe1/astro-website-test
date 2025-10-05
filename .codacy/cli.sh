@@ -109,9 +109,15 @@ download_file() {
 
   echo "Downloading from URL: ${url}"
   if command -v curl >/dev/null 2>&1; then
-    curl -# -LS "$url" -O
+    if ! curl -# -LSf "$url" -O; then
+      echo "Error: Download failed" >&2
+      exit 1
+    fi
   elif command -v wget >/dev/null 2>&1; then
-    wget "$url"
+    if ! wget "$url"; then
+      echo "Error: Download failed" >&2
+      exit 1
+    fi
   else
     echo "Error: Could not find curl or wget, please install one." >&2
     exit 1
@@ -181,7 +187,7 @@ chmod +x "$bin_path"
 
 run_command="$bin_path"
 if [ ! -x "$run_command" ]; then
-  echo "Error: Codacy cli v2 binary could not be found." >&2
+  echo "Error: Codacy cli v2 binary could not be found or is not executable at: $run_command" >&2
   exit 1
 fi
 

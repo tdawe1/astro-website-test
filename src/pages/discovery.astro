@@ -13,8 +13,8 @@ try {
   formAction = getFormspreeEndpoint();
 } catch (error) {
   console.error('Formspree configuration error:', error);
-  // Check if in development mode and no environment variables are set
-  if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID_DEV) {
+  // Show warning in development mode
+  if (import.meta.env.DEV) {
     showWarning = true;
     disableSubmit = true;
   }
@@ -22,15 +22,7 @@ try {
   formAction = '#';
 }
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Take Control - kyros</title>
-</head>
-<body>
-  <Layout title="Take Control - kyros">
+<Layout title="Take Control - kyros">
     <Navigation />
     
     <div class="contact-page">
@@ -664,51 +656,63 @@ try {
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Form handling
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-    const formMessage = document.getElementById('formMessage') as HTMLDivElement;
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
 
     if (form && submitBtn && formMessage) {
-      const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
-      const btnLoading = submitBtn.querySelector('.btn-loading') as HTMLElement;
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
 
       if (btnText && btnLoading) {
         form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
           // Show loading state
           submitBtn.disabled = true;
           btnText.style.display = 'none';
           btnLoading.style.display = 'inline';
           formMessage.style.display = 'none';
-          
-          // Formspree will handle the submission automatically
-          // We just need to show a success message after a delay
-          setTimeout(() => {
-            // Show success message
-            formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your call.';
-            formMessage.className = 'form-message success';
+
+          // Submit to Formspree
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+          .then(response => {
+            if (response.ok) {
+              formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your call.';
+              formMessage.className = 'form-message success';
+              form.reset();
+            } else {
+              formMessage.textContent = 'Something went wrong. Please try again.';
+              formMessage.className = 'form-message error';
+            }
+          })
+          .catch(() => {
+            formMessage.textContent = 'Network error. Please check your connection and try again.';
+            formMessage.className = 'form-message error';
+          })
+          .finally(() => {
             formMessage.style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            
-            // Scroll to message
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Reset button state
             submitBtn.disabled = false;
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
-          }, 1000);
+          });
         });
       }
     }
 
     // Testimonials carousel
-    const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLButtonElement>;
-    const slides = document.querySelectorAll('.testimonial-slide') as NodeListOf<HTMLElement>;
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.testimonial-slide');
     let currentSlide = 0;
 
-    function showSlide(index: number) {
+    function showSlide(index) {
       // Hide all slides
       slides.forEach(slide => slide.classList.remove('active'));
       dots.forEach(dot => dot.classList.remove('active'));
