@@ -27,7 +27,6 @@ logs/
 kyros-website.code-workspace
 .kilocode/mcp.json
 src/pages/services/index.astro
-docs/FORMSPREE_SETUP.md
 QWEN.md
 QWEN.md
 QWEN.md
