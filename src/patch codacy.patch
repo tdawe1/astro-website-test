@@ -1,0 +1,24 @@
+diff --git a/src/components/WorkflowDiscovery.tsx b/src/components/WorkflowDiscovery.tsx
+--- a/src/components/WorkflowDiscovery.tsx
++++ b/src/components/WorkflowDiscovery.tsx
+@@ -496,1 +496,1 @@
+-      const timer = setTimeout(() => setAnimateStep(null), 500);
++      const timer = setTimeout(() => { setAnimateStep(null); }, 500);
+@@ -497,1 +497,1 @@
+-      return () => clearTimeout(timer);
++      return () => { clearTimeout(timer); };
+@@ -630,1 +630,1 @@
+-                onChange={(e) => setProblem(e.target.value)}
++                onChange={(e) => { setProblem(e.target.value); }}
+@@ -631,1 +631,1 @@
+-                onKeyPress={(e) => handleKeyPress(e, handleProblemSubmit)}
++                onKeyPress={(e) => { handleKeyPress(e, handleProblemSubmit); }}
+@@ -641,1 +641,1 @@
+-                  <button key={example} type="button" onClick={() => setProblem(example)}>
++                  <button key={example} type="button" onClick={() => { setProblem(example); }}>
+@@ -694,1 +694,1 @@
+-                        onKeyPress={(e) => handleKeyPress(e, () => handleWhySubmit(num - 1))}
++                        onKeyPress={(e) => { handleKeyPress(e, () => handleWhySubmit(num - 1)); }}
+@@ -699,1 +699,1 @@
+-                        onClick={() => handleWhySubmit(num - 1)}
++                        onClick={() => { handleWhySubmit(num - 1); }}

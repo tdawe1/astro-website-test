@@ -3,6 +3,23 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getFormspreeEndpoint } from '../lib/formspree.ts';
+
+let formAction = '';
+let showWarning = false;
+let disableSubmit = false;
+
+try {
+  formAction = getFormspreeEndpoint();
+} catch (error) {
+  // Check if in development mode and no environment variables are set
+  if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID_DEV) {
+    showWarning = true;
+    disableSubmit = true;
+  }
+  // Set fallback action to prevent form submission
+  formAction = '#';
+}
 ---
 
 <Layout title="Take Control - kyros" description="Contact us to take control of your automation">
@@ -26,7 +43,13 @@ import Footer from '../components/Footer.astro';
             <p>Fill out the form below and we'll get back to you within 24 hours.</p>
           </div>
           
-          <form class="contact-form" action="https://formspree.io/f/xrbaloye" method="POST">
+          {showWarning && (
+            <div class="warning-banner">
+              <p>⚠️ Formspree is not configured. Please set PUBLIC_FORMSPREE_FORM_ID or PUBLIC_FORMSPREE_FORM_ID_DEV in your environment variables.</p>
+            </div>
+          )}
+          
+          <form class="contact-form" action={formAction} method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -58,7 +81,7 @@ import Footer from '../components/Footer.astro';
               <textarea id="message" name="message" rows="5" placeholder="Describe your current processes and what you'd like to automate..."></textarea>
             </div>
             
-            <button type="submit" class="submit-btn">
+            <button type="submit" class="submit-btn" disabled={disableSubmit}>
               <span>Send Message</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -66,6 +89,8 @@ import Footer from '../components/Footer.astro';
               </svg>
             </button>
           </form>
+          
+          <div id="form-message" class="form-message" style="display: none;"></div>
         </div>
       </section>
 
@@ -262,6 +287,26 @@ import Footer from '../components/Footer.astro';
     transform: translateX(4px);
   }
 
+  /* Warning Banner */
+  .warning-banner {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e53e3e;
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+  }
+
+  .warning-banner p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   /* Contact Info Section */
   .contact-info-section {
     margin-bottom: 2rem;
@@ -366,33 +411,73 @@ import Footer from '../components/Footer.astro';
   }
 </style>
 
+<style>
+  .form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+</style>
+
 <script>
-   // Form submission handling
-   document.addEventListener('DOMContentLoaded', function() {
-     const form = document.querySelector('.contact-form') as HTMLFormElement;
-     
-     if (form) {
-       form.addEventListener('submit', function(e) {
-         // Show loading state
-         const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
-         if (submitBtn) {
-           const originalText = submitBtn.innerHTML;
-           
-           submitBtn.innerHTML = '<span>Sending...</span>';
-           submitBtn.disabled = true;
-           
-           // Formspree will handle the submission automatically
-           // Show success message after a delay
-           setTimeout(() => {
-             alert('Thank you! Your message has been sent successfully.');
-             form.reset();
-             
-             // Reset button state
-             submitBtn.innerHTML = originalText;
-             submitBtn.disabled = false;
-           }, 1000);
-         }
-       });
-     }
-   });
- </script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.contact-form') as HTMLFormElement;
+  if (!form) return;
+  
+  const messageDiv = document.getElementById('form-message') as HTMLDivElement;
+  if (!messageDiv) return;
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+    if (!submitBtn) return;
+    
+    const originalText = submitBtn.innerHTML;
+    
+    submitBtn.innerHTML = '<span>Sending...</span>';
+    submitBtn.disabled = true;
+    messageDiv.style.display = 'none';
+    
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        messageDiv.textContent = 'Thank you! Your message has been sent successfully.';
+        messageDiv.className = 'form-message success';
+        messageDiv.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      messageDiv.textContent = 'Sorry, there was an error sending your message. Please try again.';
+      messageDiv.className = 'form-message error';
+      messageDiv.style.display = 'block';
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+});
+</script>
