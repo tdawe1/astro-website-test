@@ -58,7 +58,14 @@ const knowledgeBase: KnowledgeBaseEntry[] = [
   },
   {
     id: "scattered-comms",
-    keywords: ["slack", "teams", "whatsapp", "multiple channels", "messages", "communications"],
+    keywords: [
+      "slack",
+      "teams",
+      "whatsapp",
+      "multiple channels",
+      "messages",
+      "communications",
+    ],
     rootCause:
       "Customer conversations live across too many channels, so there is no reliable queue or assignment logic.",
     solutions: [
@@ -142,7 +149,14 @@ const knowledgeBase: KnowledgeBaseEntry[] = [
   },
   {
     id: "customer-support",
-    keywords: ["support", "helpdesk", "faq", "questions", "tickets", "customer"],
+    keywords: [
+      "support",
+      "helpdesk",
+      "faq",
+      "questions",
+      "tickets",
+      "customer",
+    ],
     rootCause:
       "Support queues mix simple FAQs with high-touch work, so specialists burn cycles triaging instead of solving.",
     solutions: [
@@ -488,7 +502,9 @@ const WorkflowDiscoveryTool: React.FC = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [animateStep, setAnimateStep] = useState<number | "analysis" | null>(null);
+  const [animateStep, setAnimateStep] = useState<number | "analysis" | null>(
+    null
+  );
   const stepRefs = useRef<Record<number | string, HTMLDivElement | null>>({});
 
   useEffect(() => {
@@ -615,7 +631,12 @@ const WorkflowDiscoveryTool: React.FC = () => {
           </div>
         </div>
 
-        <div className={`${getCardClass(0)}`} ref={(el) => (stepRefs.current[0] = el)}>
+        <div
+          className={`${getCardClass(0)}`}
+          ref={(el) => {
+            stepRefs.current[0] = el;
+          }}
+        >
           {currentStep === 0 ? (
             <>
               <h3>What challenge keeps coming back?</h3>
@@ -638,7 +659,13 @@ const WorkflowDiscoveryTool: React.FC = () => {
                   "Proposals take 3 hours of copy-paste per prospect",
                   "Support repeats the same answers all day",
                 ].map((example) => (
-                  <button key={example} type="button" onClick={() => setProblem(example)}>
+                  <button
+                    key={example}
+                    type="button"
+                    onClick={() => {
+                      setProblem(example);
+                    }}
+                  >
                     {example}
                   </button>
                 ))}
@@ -666,13 +693,17 @@ const WorkflowDiscoveryTool: React.FC = () => {
           <div
             key={num}
             className={getCardClass(num)}
-            ref={(el) => (stepRefs.current[num] = el)}
+            ref={(el) => {
+              stepRefs.current[num] = el;
+            }}
           >
             {currentStep >= num && (
               <>
                 <div className="wt-step-header">
                   <span className="wt-step-number">{num}</span>
-                  <div className="wt-step-title">Why does it happen? (Level {num})</div>
+                  <div className="wt-step-title">
+                    Why does it happen? (Level {num})
+                  </div>
                 </div>
                 {currentStep === num ? (
                   <>
@@ -691,7 +722,11 @@ const WorkflowDiscoveryTool: React.FC = () => {
                           updated[num - 1] = e.target.value;
                           setWhys(updated);
                         }}
-                        onKeyPress={(e) => handleKeyPress(e, () => handleWhySubmit(num - 1))}
+                        onKeyPress={(e) =>
+                          handleKeyPress(e, () => {
+                            handleWhySubmit(num - 1);
+                          })
+                        }
                       />
                       <button
                         type="button"
@@ -713,7 +748,12 @@ const WorkflowDiscoveryTool: React.FC = () => {
         ))}
 
         {isAnalyzing && (
-          <div className="wt-loader" ref={(el) => (stepRefs.current.analysis = el)}>
+          <div
+            className="wt-loader"
+            ref={(el) => {
+              stepRefs.current.analysis = el;
+            }}
+          >
             <div className="wt-loader-dots">
               <span></span>
               <span></span>
@@ -724,7 +764,12 @@ const WorkflowDiscoveryTool: React.FC = () => {
         )}
 
         {showAnalysis && analysis && (
-          <div className="wt-analysis" ref={(el) => (stepRefs.current.results = el)}>
+          <div
+            className="wt-analysis"
+            ref={(el) => {
+              stepRefs.current.results = el;
+            }}
+          >
             <h3>🎯 Discovery complete</h3>
             <p className="heading">Here’s where automation will hit hardest.</p>
             <div className="wt-analysis-grid">
@@ -742,7 +787,11 @@ const WorkflowDiscoveryTool: React.FC = () => {
                 <ul>
                   {analysis.aiSolutions.map((solution) => (
                     <li key={solution.title}>
-                      <Lightbulb size={16} color="#0d6efd" style={{ marginTop: 2 }} />
+                      <Lightbulb
+                        size={16}
+                        color="#0d6efd"
+                        style={{ marginTop: 2 }}
+                      />
                       <div>
                         <strong>{solution.title}</strong>
                         <div>{solution.description}</div>
@@ -759,7 +808,11 @@ const WorkflowDiscoveryTool: React.FC = () => {
                 <ul>
                   {analysis.workflowInsights.map((insight, index) => (
                     <li key={index}>
-                      <CheckCircle size={16} color="#16a34a" style={{ marginTop: 2 }} />
+                      <CheckCircle
+                        size={16}
+                        color="#16a34a"
+                        style={{ marginTop: 2 }}
+                      />
                       <div>{insight}</div>
                     </li>
                   ))}
@@ -769,15 +822,19 @@ const WorkflowDiscoveryTool: React.FC = () => {
 
             <div className="wt-analysis-footer">
               <p>
-                Ready to turn this outline into a sprint-ready plan? We’ll map the
-                workflow with your team and ship the first automation inside four
-                weeks.
+                Ready to turn this outline into a sprint-ready plan? We’ll map
+                the workflow with your team and ship the first automation inside
+                four weeks.
               </p>
               <div className="wt-actions">
                 <a className="wt-button" href="/discovery">
                   Talk to Kyros
                 </a>
-                <button type="button" className="wt-button alt" onClick={resetTool}>
+                <button
+                  type="button"
+                  className="wt-button alt"
+                  onClick={resetTool}
+                >
                   Run another scenario
                 </button>
               </div>

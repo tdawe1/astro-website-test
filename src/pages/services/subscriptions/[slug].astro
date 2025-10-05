@@ -34,7 +34,9 @@ const { tool } = Astro.props;
           <div class="persona-card">
             <h2>Who it serves</h2>
             <p>{tool.persona}</p>
-            <p class="note">Replace with ICP bullets, team size ranges, or maturity markers.</p>
+            {import.meta.env.DEV && (
+              <p class="note">Replace with ICP bullets, team size ranges, or maturity markers.</p>
+            )}
           </div>
         </aside>
       </div>
@@ -67,7 +69,9 @@ const { tool } = Astro.props;
       <div class="section-container">
         <header>
           <h2>Outcomes to expect</h2>
-          <p>Swap this copy for proof points—numbers, quotes, or screenshots once available.</p>
+          {import.meta.env.DEV && (
+            <p>Swap this copy for proof points—numbers, quotes, or screenshots once available.</p>
+          )}
         </header>
         <div class="outcomes-grid">
           {tool.outcomes.map((outcome) => (
@@ -83,7 +87,9 @@ const { tool } = Astro.props;
       <div class="section-container">
         <div class="cadence-card">
           <h2>Proposed delivery cadence</h2>
-          <p class="placeholder">Outline onboarding timeline, standing touchpoints, and who owns what once you finalise the packaging. The structure below is a suggestion you can overwrite.</p>
+          {import.meta.env.DEV && (
+            <p class="placeholder">Outline onboarding timeline, standing touchpoints, and who owns what once you finalise the packaging. The structure below is a suggestion you can overwrite.</p>
+          )}
           <div class="cadence-grid">
             <div>
               <h3>Onboarding</h3>
@@ -107,7 +113,9 @@ const { tool } = Astro.props;
         <div class="pricing-card">
           <h2>Pricing placeholder</h2>
           <p>{tool.pricingNote}</p>
-          <p class="placeholder">Insert tier names, add-ons, and guarantees once commercial decisions are locked. Consider echoing Buffer-style tables here.</p>
+          {import.meta.env.DEV && (
+            <p class="placeholder">Insert tier names, add-ons, and guarantees once commercial decisions are locked. Consider echoing Buffer-style tables here.</p>
+          )}
         </div>
       </div>
     </section>

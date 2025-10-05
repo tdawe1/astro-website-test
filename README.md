@@ -1,6 +1,6 @@
 # kyros Website
 
-A  website for kyros - a UK-based automation agency that builds automation and workflow optimisation tools.
+A website for kyros - a UK-based automation agency that builds automation and workflow optimisation tools.
 
 ## 🚀 Features
 
@@ -8,6 +8,8 @@ A  website for kyros - a UK-based automation agency that builds automation and w
 - **Performance**: Fast-loading static site built with Astro
 - **SEO Optimized**: Semantic HTML and proper meta tags
 - **Accessibility**: ARIA labels and keyboard navigation support
+- **Secure**: No self-hosted server-side code, database, or backend infrastructure
+- **Contact Forms**: Serverless form handling via Formspree
 
 ## 🛠️ Tech Stack
 
@@ -15,7 +17,45 @@ A  website for kyros - a UK-based automation agency that builds automation and w
 - **Styling**: CSS with custom properties and responsive design
 - **Fonts**: Inter from Google Fonts
 - **Icons**: Emoji-based icon system
+- **Forms**: [Formspree](https://formspree.io) - Serverless form backend
 - **Deployment**: Static hosting ready
+
+## Environment Variables
+
+The application uses the following environment variables:
+
+### Formspree Configuration
+
+```env
+# Required: Production Formspree form ID
+PUBLIC_FORMSPREE_FORM_ID=your_production_form_id_here
+
+# Optional: Development Formspree form ID
+# When set, development mode uses this form ID
+# When not set, development mode falls back to PUBLIC_FORMSPREE_FORM_ID
+PUBLIC_FORMSPREE_FORM_ID_DEV=your_dev_form_id_here
+```
+
+**Setup**: Copy `.env.example` to `.env` and configure the variables above.
+
+## 📧 Contact Forms
+
+The website uses [Formspree](https://formspree.io) for secure, serverless contact form handling. This eliminates the need for server-side code, databases, or API endpoints.
+
+### Setup
+
+1. Create a free Formspree account at [formspree.io](https://formspree.io)
+2. Create forms and copy the form IDs
+3. Configure the Formspree environment variables (see Environment Variables section above)
+4. See `docs/FORMSPREE_SETUP.md` for detailed setup instructions
+
+### Features
+
+- **Spam Protection**: Built-in spam filtering
+- **Email Notifications**: Instant notifications for new submissions
+- **Dashboard**: Web interface to view and manage submissions
+- **GDPR Compliant**: Secure data handling
+- **Free Tier**: 50 submissions per month
 
 ## 🤔 Why Astro?
 
@@ -54,7 +94,7 @@ src/
 ## 📱 Responsive Breakpoints
 
 - **Mobile**: < 768px
-- **Tablet**: 768px - 1920px  
+- **Tablet**: 768px - 1920px
 - **Desktop**: > 1920px
 
 ## 📄 License

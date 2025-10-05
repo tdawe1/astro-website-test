@@ -4,9 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run validate:env && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate:env": "node scripts/validate-env.js"
   },
   "dependencies": {
     "@astrojs/node": "^9.4.3",
@@ -14,8 +15,6 @@
     "astro": "^5.13.3",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "react-dom": "^19.1.1"
   }
 }

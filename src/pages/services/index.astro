@@ -9,6 +9,8 @@ const sprintHighlights = [
   'Embed with your operators to map reality before we touch code',
   'Launch with enablement, documentation, and clear ownership transitions'
 ];
+
+const showPlaceholders = import.meta.env.SHOW_PLACEHOLDERS || import.meta.env.MODE !== 'production';
 ---
 
 <Layout title="Services - Kyros" description="Overview of Kyros services: Agile Sprint delivery and subscription tools.">
@@ -20,7 +22,7 @@ const sprintHighlights = [
         <div class="hero-content">
           <p class="eyebrow">What we offer</p>
           <h1>From first automation to always-on improvements.</h1>
-          <p class="lead">Pick the engagement that meets you where you are. The flagship Agile Sprint for net-new build-outs. Subscription toolkits when you need steady, opinionated instrumentation. All copy is placeholder—swap when messaging is final.</p>
+          <p class="lead">Pick the engagement that meets you where you are. The flagship Agile Sprint for net-new build-outs. Subscription toolkits when you need steady, opinionated instrumentation.{import.meta.env.SHOW_PLACEHOLDERS ? ' All copy is placeholder—swap when messaging is final.' : ''}</p>
           <div class="cta-row">
             <a class="cta-primary" href="/services/agile-sprint">Explore the Agile Sprint</a>
             <a class="cta-secondary" href="/discovery">Book a walkthrough</a>
@@ -33,7 +35,6 @@ const sprintHighlights = [
             <li><strong>Support layer:</strong> Subscription tools for monitoring, insights, and process packs</li>
             <li><strong>Engagement sizes:</strong> Ideal for teams 10–250 with clear bottlenecks to unblock</li>
           </ul>
-          <p class="note">Replace these bullets with positioning statements, ICP details, or proof once research is in.</p>
         </div>
       </div>
     </section>
@@ -52,6 +53,7 @@ const sprintHighlights = [
                 <li>{item}</li>
               ))}
             </ul>
+            {showPlaceholders && <p class="note">Replace these bullets with positioning statements, ICP details, or proof once research is in.</p>}
             <div class="highlight-cta">
               <a class="cta-primary" href="/services/agile-sprint">See the sprint structure</a>
               <a class="cta-link" href="/case-studies">Browse case studies</a>
@@ -93,7 +95,7 @@ const sprintHighlights = [
         <div class="next-step-card">
           <div>
             <h2>Not sure where to start?</h2>
-            <p>Outline your challenge, drop in metrics if you have them, and we will recommend the right entry point. This CTA will later link to the diagnostic form you mentioned.</p>
+            <p>Outline your challenge, drop in metrics if you have them, and we will recommend the right entry point.</p>
           </div>
           <a class="cta-primary" href="/discovery">Talk with Kyros</a>
         </div>

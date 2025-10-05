@@ -3,75 +3,92 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
+import { getFormspreeEndpoint } from '../lib/formspree.ts';
+
+let formAction = '';
+let showWarning = false;
+let disableSubmit = false;
+
+try {
+  formAction = getFormspreeEndpoint();
+} catch (error) {
+  console.error('Formspree configuration error:', error);
+  // Show warning in development mode
+  if (import.meta.env.DEV) {
+    showWarning = true;
+    disableSubmit = true;
+  }
+  // Set fallback action to prevent form submission
+  formAction = '#';
+}
 ---
-
 <Layout title="Take Control - kyros">
-  <Navigation />
-  
-  <div class="contact-page">
-    <header class="contact-header">
-      <div class="section-container">
-        <div class="header-content">
-          <h1>Ready for clarity?</h1>
+    <Navigation />
+    
+    <div class="contact-page">
+      <header class="contact-header">
+        <div class="section-container">
+          <div class="header-content">
+            <h1>Ready for clarity?</h1>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <section class="contact-content">
-      <div class="section-container">
-        <div class="content-grid">
-          <div class="left-column">
-            <div class="benefits-section">
-              <h2>What You'll Get</h2>
-              
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <circle cx="12" cy="12" r="6"></circle>
-                    <circle cx="12" cy="12" r="2"></circle>
-                  </svg>
+      <section class="contact-content">
+        <div class="section-container">
+          <div class="content-grid">
+            <div class="left-column">
+              <div class="benefits-section">
+                <h2>What You'll Get</h2>
+                
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Workflow Mapping</h3>
+                    <p>We'll analyze your current processes and identify the 3-5 highest-ROI automation opportunities.</p>
+                  </div>
                 </div>
-                <div class="benefit-content">
-                  <h3>Workflow Mapping</h3>
-                  <p>We'll analyze your current processes and identify the 3-5 highest-ROI automation opportunities.</p>
+                
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1v22"></path>
+                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                  </div>
+                  <div class="benefit-content">
+                    <h3>ROI Calculation</h3>
+                    <p>Clear numbers on time savings, cost reduction, and revenue impact from automation.</p>
+                  </div>
                 </div>
-              </div>
-              
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 1v22"></path>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                  </svg>
+                
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                    </svg>
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Implementation Roadmap</h3>
+                    <p>Step-by-step plan to get your first automation live in 4-8 weeks.</p>
+                  </div>
                 </div>
-                <div class="benefit-content">
-                  <h3>ROI Calculation</h3>
-                  <p>Clear numbers on time savings, cost reduction, and revenue impact from automation.</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
-                  </svg>
-                </div>
-                <div class="benefit-content">
-                  <h3>Implementation Roadmap</h3>
-                  <p>Step-by-step plan to get your first automation live in 4-8 weeks.</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <circle cx="12" cy="16" r="1"></circle>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                  </svg>
-                </div>
-                               <div class="benefit-content">
+                
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <circle cx="12" cy="16" r="1"></circle>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </div>
+                              <div class="benefit-content">
                  <h3>Zero Risk</h3>
                  <p>If we don't find opportunities worth pursuing, you pay nothing. Guaranteed.</p>
                </div>
@@ -164,7 +181,13 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
               <h2>Book Your Call</h2>
               <p class="form-subtitle">Choose a time that works for you. Calls typically last 30-45 minutes.</p>
               
-              <form class="booking-form" id="contactForm" action="https://formspree.io/f/xrbaloye" method="POST">
+              {showWarning && (
+                <div class="warning-banner">
+                  <p>⚠️ Formspree is not configured. Please set PUBLIC_FORMSPREE_FORM_ID or PUBLIC_FORMSPREE_FORM_ID_DEV in your environment variables.</p>
+                </div>
+              )}
+              
+              <form class="booking-form" id="contactForm" action={formAction} method="POST">
                 <div class="form-group">
                   <label for="name">Full Name *</label>
                   <input type="text" id="name" name="name" placeholder="Full name" required>
@@ -204,7 +227,7 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
                   <textarea id="bottleneck" name="bottleneck" rows="4" placeholder="What's costing you time or money right now?"></textarea>
                 </div>
                 
-                <button type="submit" class="submit-btn" id="submitBtn">
+                <button type="submit" class="submit-btn" id="submitBtn" disabled={disableSubmit}>
                   <span class="btn-text">Book My Free Discovery Call</span>
                   <span class="btn-loading" style="display: none;">Booking...</span>
                 </button>
@@ -221,14 +244,9 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-  
-  <Footer />
-</Layout>
+      </section>
 
-<style>
+      <style>
   /* Contact Page Styles */
   .contact-page {
     background-color: var(--bg-light);
@@ -572,6 +590,26 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
     border: 1px solid #f5c6cb;
   }
 
+  /* Warning Banner */
+  .warning-banner {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e53e3e;
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+  }
+
+  .warning-banner p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   /* Responsive Design */
   @media (max-width: 768px) {
     .contact-page {
@@ -618,51 +656,63 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Form handling
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-    const formMessage = document.getElementById('formMessage') as HTMLDivElement;
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
 
     if (form && submitBtn && formMessage) {
-      const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
-      const btnLoading = submitBtn.querySelector('.btn-loading') as HTMLElement;
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
 
       if (btnText && btnLoading) {
         form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
           // Show loading state
           submitBtn.disabled = true;
           btnText.style.display = 'none';
           btnLoading.style.display = 'inline';
           formMessage.style.display = 'none';
-          
-          // Formspree will handle the submission automatically
-          // We just need to show a success message after a delay
-          setTimeout(() => {
-            // Show success message
-            formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your call.';
-            formMessage.className = 'form-message success';
+
+          // Submit to Formspree
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+          .then(response => {
+            if (response.ok) {
+              formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your call.';
+              formMessage.className = 'form-message success';
+              form.reset();
+            } else {
+              formMessage.textContent = 'Something went wrong. Please try again.';
+              formMessage.className = 'form-message error';
+            }
+          })
+          .catch(() => {
+            formMessage.textContent = 'Network error. Please check your connection and try again.';
+            formMessage.className = 'form-message error';
+          })
+          .finally(() => {
             formMessage.style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            
-            // Scroll to message
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Reset button state
             submitBtn.disabled = false;
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
-          }, 1000);
+          });
         });
       }
     }
 
     // Testimonials carousel
-    const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLButtonElement>;
-    const slides = document.querySelectorAll('.testimonial-slide') as NodeListOf<HTMLElement>;
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.testimonial-slide');
     let currentSlide = 0;
 
-    function showSlide(index: number) {
+    function showSlide(index) {
       // Hide all slides
       slides.forEach(slide => slide.classList.remove('active'));
       dots.forEach(dot => dot.classList.remove('active'));
@@ -687,3 +737,6 @@ import WorkflowDiscoveryTool from '../components/WorkflowDiscovery.tsx';
     }, 5000);
   });
 </script>
+    <Footer />
+    </div>
+  </Layout>
