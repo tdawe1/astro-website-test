@@ -12,11 +12,14 @@ let disableSubmit = false;
 try {
   formAction = getFormspreeEndpoint();
 } catch (error) {
-  // Check if in development mode and no environment variables are set
-  if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID_DEV) {
+  // Disable submit in all error cases
+  disableSubmit = true;
+
+  // Only show warning banner in development mode
+  if (import.meta.env.DEV) {
     showWarning = true;
-    disableSubmit = true;
   }
+
   // Set fallback action to prevent form submission
   formAction = '#';
 }
