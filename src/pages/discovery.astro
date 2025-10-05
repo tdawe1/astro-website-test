@@ -12,6 +12,7 @@ let disableSubmit = false;
 try {
   formAction = getFormspreeEndpoint();
 } catch (error) {
+  console.error('Formspree configuration error:', error);
   // Check if in development mode and no environment variables are set
   if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID && !import.meta.env.PUBLIC_FORMSPREE_FORM_ID_DEV) {
     showWarning = true;
