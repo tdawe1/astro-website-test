@@ -14,8 +14,6 @@
     "astro": "^5.13.3",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "react-dom": "^19.1.1"
   }
 }

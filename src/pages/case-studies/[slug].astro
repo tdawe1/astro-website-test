@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { study } = Astro.props;
 ---
 
-<Layout title={`${study.name} Case Study - Kyros`} description={`Placeholder detail for the ${study.name} project.`}>
+<Layout title={`${study.name} Case Study - Kyros`} description={study.challenge || `Learn how Kyros helped ${study.name} achieve their goals.`}>
   <Navigation />
 
   <main class="case-study">
@@ -26,7 +26,7 @@ const { study } = Astro.props;
           <p class="sector">{study.sector}</p>
           <p class="challenge">{study.challenge}</p>
           <div class="metrics">
-            {study.metrics.map((metric) => (
+            {study.metrics?.map((metric) => (
               <span class="metric">{metric}</span>
             ))}
           </div>
@@ -35,7 +35,7 @@ const { study } = Astro.props;
           <div class="services-card">
             <h2>Services involved</h2>
             <ul>
-              {study.services.map((service) => (
+              {study.services?.map((service) => (
                 <li>{service}</li>
               ))}
             </ul>
@@ -51,7 +51,7 @@ const { study } = Astro.props;
           <div>
             <h2>How we approached it</h2>
             <ol>
-              {study.approach.map((step) => (
+              {study.approach?.map((step) => (
                 <li>{step}</li>
               ))}
             </ol>
@@ -59,7 +59,7 @@ const { study } = Astro.props;
           <div>
             <h2>Outcomes</h2>
             <ul>
-              {study.outcomes.map((outcome) => (
+              {study.outcomes?.map((outcome) => (
                 <li>{outcome}</li>
               ))}
             </ul>

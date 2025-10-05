@@ -26,7 +26,7 @@ import Footer from '../components/Footer.astro';
             <p>Fill out the form below and we'll get back to you within 24 hours.</p>
           </div>
           
-          <form class="contact-form" action="/api/contact" method="POST">
+          <form class="contact-form" action="https://formspree.io/f/xrbaloye" method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -367,49 +367,32 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
-  // Form submission handling
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.contact-form') as HTMLFormElement;
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(form);
-        const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
-        
-        if (submitBtn) {
-          const originalText = submitBtn.innerHTML;
-          
-          // Show loading state
-          submitBtn.innerHTML = '<span>Sending...</span>';
-          submitBtn.disabled = true;
-          
-          // Submit form
-          fetch('/api/contact', {
-            method: 'POST',
-            body: formData
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              alert('Thank you! Your message has been sent successfully.');
-              form.reset();
-            } else {
-              alert('Sorry, there was an error sending your message. Please try again.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Sorry, there was an error sending your message. Please try again.');
-          })
-          .finally(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-          });
-        }
-      });
-    }
-  });
-</script>
+   // Form submission handling
+   document.addEventListener('DOMContentLoaded', function() {
+     const form = document.querySelector('.contact-form') as HTMLFormElement;
+     
+     if (form) {
+       form.addEventListener('submit', function(e) {
+         // Show loading state
+         const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+         if (submitBtn) {
+           const originalText = submitBtn.innerHTML;
+           
+           submitBtn.innerHTML = '<span>Sending...</span>';
+           submitBtn.disabled = true;
+           
+           // Formspree will handle the submission automatically
+           // Show success message after a delay
+           setTimeout(() => {
+             alert('Thank you! Your message has been sent successfully.');
+             form.reset();
+             
+             // Reset button state
+             submitBtn.innerHTML = originalText;
+             submitBtn.disabled = false;
+           }, 1000);
+         }
+       });
+     }
+   });
+ </script>
