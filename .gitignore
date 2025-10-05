@@ -29,3 +29,4 @@ pnpm-debug.log*
 .github/instructions/codacy.instructions.md
 kyros-website.code-workspace
 .kilocode/mcp.json
+src/pages/services/index.astro
