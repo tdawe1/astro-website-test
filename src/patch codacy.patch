@@ -1,10 +1,10 @@
 diff --git a/src/components/WorkflowDiscovery.tsx b/src/components/WorkflowDiscovery.tsx
 --- a/src/components/WorkflowDiscovery.tsx
 +++ b/src/components/WorkflowDiscovery.tsx
-@@ -496,1 +496,1 @@
+@@ -512,1 +512,1 @@
 -      const timer = setTimeout(() => setAnimateStep(null), 500);
 +      const timer = setTimeout(() => { setAnimateStep(null); }, 500);
-@@ -497,1 +497,1 @@
+@@ -513,1 +513,1 @@
 -      return () => clearTimeout(timer);
 +      return () => { clearTimeout(timer); };
 @@ -630,1 +630,1 @@
