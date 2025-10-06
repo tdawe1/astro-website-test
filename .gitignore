@@ -24,6 +24,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# vscode settings and build artifacts
+.vscode/
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
