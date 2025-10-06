@@ -16,7 +16,10 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm test
+      - run: npm run build
+        env:
+          NODE_ENV: production
+          PUBLIC_FORMSPREE_FORM_ID: ${{ secrets.PUBLIC_FORMSPREE_FORM_ID }}
 
   publish-gpr:
     needs: build
