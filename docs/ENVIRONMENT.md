@@ -151,9 +151,8 @@ git log --grep="password\|secret\|key\|token" --oneline
 ### GitHub Actions
 Store secrets in GitHub repository settings:
 - `SENDGRID_API_KEY`
-- `DATABASE_CONNECTION_STRING`
+- `DATABASE_PATH` (or `DATABASE_CONNECTION_STRING` if using a remote DB)
 - `DEPLOYMENT_TOKEN`
-
 ### Vercel/Netlify
 Configure environment variables in the deployment dashboard.
 
