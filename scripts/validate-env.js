@@ -68,6 +68,15 @@ const validationRules = {
       required: true,
       pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
       description: 'Email notification recipient'
+    },
+    FORMSPREE_ENDPOINT: {
+      required: true,
+      description: 'Formspree endpoint for forms'
+    },
+    SESSION_SECRET: {
+      required: true,
+      minLength: 32,
+      description: 'Session encryption secret (required in production)'
     }
   },
   
