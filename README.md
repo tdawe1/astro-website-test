@@ -57,6 +57,24 @@ src/
 - **Tablet**: 768px - 1920px  
 - **Desktop**: > 1920px
 
+## ⚙️ Environment Configuration
+
+Copy the environment template and configure for your environment:
+
+```bash
+# For local development
+cp .env.template .env
+
+# For production deployment  
+cp .env.template .env.production
+```
+
+See [Environment Configuration Guide](docs/ENVIRONMENT.md) for detailed setup instructions, including:
+- Required environment variables
+- Security best practices
+- AI/automation agent configuration
+- Email service integration
+
 ## 📄 License
 
 All rights reserved © 2025 kyros

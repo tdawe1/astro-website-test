@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate-env": "node scripts/validate-env.js",
+    "setup-env": "cp .env.template .env && echo 'Created .env from template. Please configure it before running the application.'"
   },
   "dependencies": {
     "@astrojs/node": "^9.4.3",
