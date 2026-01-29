@@ -1,7 +1,3 @@
-# kyros Website
-
-A  website for kyros - a UK-based automation agency that builds automation and workflow optimisation tools.
-
 ## 🚀 Features
 
 - **Responsive**: Optimized for all screen sizes with fluid typography
